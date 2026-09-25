@@ -57,14 +57,6 @@ $amanah_socials = amanahcareservices_get_social_links();
 			box-shadow: 0 14px 40px rgba(27, 11, 58, 0.1);
 		}
 
-		#masthead.is-scrolled .amanah-header-logo img {
-			max-height: 50px;
-		}
-
-		.amanah-header-logo img {
-			transition: max-height 0.3s ease;
-		}
-
 		/* Desktop navigation */
 		.amanah-nav>ul {
 			display: flex;
@@ -83,7 +75,7 @@ $amanah_socials = amanahcareservices_get_social_links();
 			position: relative;
 			display: flex;
 			align-items: center;
-			min-height: 5.25rem;
+			min-height: 6.25rem;
 			color: #2b2140;
 			font-size: 0.8rem;
 			font-weight: 700;
@@ -116,7 +108,7 @@ $amanah_socials = amanahcareservices_get_social_links();
 		.amanah-nav>ul>li>a::after {
 			position: absolute;
 			right: 50%;
-			bottom: 1.5rem;
+			bottom: 2rem;
 			left: 50%;
 			height: 3px;
 			border-radius: 999px;
@@ -372,14 +364,14 @@ $amanah_socials = amanahcareservices_get_social_links();
 		<header id="masthead" class="site-header sticky top-0 z-50">
 			<div id="main-header" class="border-b border-[#ece6f6] bg-white/95 backdrop-blur-xl transition-shadow duration-300">
 				<div class="container mx-auto px-4 md:px-6">
-					<div class="flex min-h-[76px] items-center justify-between gap-4 lg:min-h-[84px]">
+					<div class="flex min-h-[88px] items-center justify-between gap-4 lg:min-h-[100px]">
 						<a class="amanah-header-logo flex shrink-0 items-center" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 							<img
 								src="<?php echo esc_url( amanahcareservices_get_logo_url( 'horizontal' ) ); ?>"
 								alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
 								width="816"
 								height="250"
-								class="h-auto max-h-[46px] w-auto sm:max-h-[54px] xl:max-h-[60px]"
+								class="h-auto max-h-[50px] w-auto sm:max-h-[58px] xl:max-h-[64px]"
 								decoding="async">
 						</a>
 
