@@ -13,7 +13,6 @@ $home_contact  = amanahcareservices_get_contact();
 $home_phone    = amanahcareservices_get_primary_phone();
 $home_socials  = amanahcareservices_get_social_links();
 $home_services = array_values( amanahcareservices_get_services() );
-$home_hero_id  = absint( get_theme_mod( 'amanahcareservices_hero_image', 0 ) );
 $home_about_id = absint( get_theme_mod( 'amanahcareservices_about_image', 0 ) );
 
 $home_values = array(
@@ -84,144 +83,12 @@ for ( $i = 1; $i <= 3; $i++ ) {
 
 <main id="primary" class="site-main overflow-hidden bg-white">
 
-	<!-- =========================================================
-	     Hero
-	     ========================================================= -->
-	<section class="amanah-hero relative isolate overflow-hidden pb-28 pt-12 sm:pt-16 lg:pb-36 lg:pt-20" aria-labelledby="home-hero-title">
-		<div class="amanah-hero-art" aria-hidden="true">
-			<span class="amanah-hero-art__glow amanah-hero-art__glow--purple"></span>
-			<span class="amanah-hero-art__glow amanah-hero-art__glow--green"></span>
-			<span class="amanah-hero-art__grid"></span>
-			<svg class="amanah-hero-art__heart" viewBox="0 0 200 180" fill="none">
-				<path d="M100 170C60 135 10 105 10 58 10 30 32 10 58 10c18 0 32 10 42 24 10-14 24-24 42-24 26 0 48 20 48 48 0 47-50 77-90 112z" />
-			</svg>
-		</div>
-
-		<div class="container relative mx-auto px-5 md:px-8 lg:px-12">
-			<div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-10 xl:gap-16">
-				<div class="lg:col-span-7" data-reveal>
-					<p class="inline-flex items-center gap-3 rounded-full border border-primary/15 bg-white/80 py-1.5 pl-1.5 pr-4 text-[11px] font-extrabold uppercase tracking-[0.16em] text-primary shadow-[0_8px_24px_rgba(81,31,159,0.08)] backdrop-blur">
-						<span class="flex h-7 w-7 items-center justify-center rounded-full bg-secondary text-white">
-							<i class="fa-solid fa-heart text-[10px]" aria-hidden="true"></i>
-						</span>
-						<?php
-						if ( $home_contact['ndis_number'] ) {
-							esc_html_e( 'Registered NDIS Provider', 'amanahcareservices' );
-						} else {
-							esc_html_e( 'Disability & community support', 'amanahcareservices' );
-						}
-						?>
-					</p>
-
-					<h1 id="home-hero-title" class="mt-7 text-[2.6rem] font-extrabold leading-[1.05] tracking-[-0.04em] text-ink sm:text-6xl xl:text-[4.5rem]">
-						<?php esc_html_e( 'Care built on trust,', 'amanahcareservices' ); ?>
-						<span class="amanah-gradient-text block"><?php esc_html_e( 'delivered with heart.', 'amanahcareservices' ); ?></span>
-					</h1>
-
-					<p class="mt-7 max-w-xl text-lg leading-8 text-body">
-						<?php esc_html_e( 'Amanah Care Services provides respectful, person-centred support that helps you live safely, build independence and stay connected to the people and community you love.', 'amanahcareservices' ); ?>
-					</p>
-
-					<div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-						<a href="<?php echo esc_url( $home_contact['referral_url'] ); ?>"
-							class="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-primary to-primaryDark py-3 pl-7 pr-3 text-[12px] font-extrabold uppercase tracking-[0.14em] text-white shadow-[0_16px_36px_rgba(81,31,159,0.32)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(81,31,159,0.4)]">
-							<span class="relative z-10"><?php esc_html_e( 'Make a Referral', 'amanahcareservices' ); ?></span>
-							<span class="relative z-10 flex h-9 w-9 items-center justify-center rounded-full bg-secondary transition-transform group-hover:translate-x-0.5">
-								<i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
-							</span>
-							<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full" aria-hidden="true"></span>
-						</a>
-
-						<?php if ( $home_phone['label'] ) : ?>
-							<a href="<?php echo esc_attr( $home_phone['uri'] ); ?>" class="group inline-flex items-center justify-center gap-3 rounded-full border border-[#e2d9f2] bg-white px-4 py-2.5 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-secondary/40 hover:shadow-lg">
-								<span class="flex h-9 w-9 items-center justify-center rounded-full bg-mint text-secondaryDark transition group-hover:bg-secondary group-hover:text-white">
-									<i class="fa-solid fa-phone" aria-hidden="true"></i>
-								</span>
-								<span class="pr-3 text-left leading-tight">
-									<span class="block text-[10px] font-bold uppercase tracking-[0.16em] text-body/80"><?php esc_html_e( 'Talk to our team', 'amanahcareservices' ); ?></span>
-									<span class="block text-[15px] font-extrabold text-ink"><?php echo esc_html( $home_phone['label'] ); ?></span>
-								</span>
-							</a>
-						<?php else : ?>
-							<a href="#services" class="group inline-flex items-center justify-center gap-3 rounded-full border border-[#e2d9f2] bg-white px-7 py-4 text-[12px] font-extrabold uppercase tracking-[0.14em] text-primary shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg">
-								<?php esc_html_e( 'Explore Services', 'amanahcareservices' ); ?>
-								<i class="fa-solid fa-arrow-down text-[11px] transition-transform group-hover:translate-y-0.5" aria-hidden="true"></i>
-							</a>
-						<?php endif; ?>
-					</div>
-
-					<ul class="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm font-semibold text-ink/80">
-						<li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-secondary" aria-hidden="true"></i><?php esc_html_e( 'Person-centred plans', 'amanahcareservices' ); ?></li>
-						<li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-secondary" aria-hidden="true"></i><?php esc_html_e( 'Consistent support workers', 'amanahcareservices' ); ?></li>
-						<li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-secondary" aria-hidden="true"></i><?php esc_html_e( 'Culturally respectful care', 'amanahcareservices' ); ?></li>
-					</ul>
-				</div>
-
-				<!-- Hero visual -->
-				<div class="relative mx-auto w-full max-w-[520px] lg:col-span-5 lg:max-w-none" data-reveal>
-					<div class="relative aspect-[4/5] w-full">
-						<span class="absolute -right-3 -top-3 h-full w-full rounded-t-[999px] rounded-b-[2.5rem] border-2 border-dashed border-secondary/30" aria-hidden="true"></span>
-
-						<?php if ( $home_hero_id ) : ?>
-							<div class="relative h-full w-full overflow-hidden rounded-t-[999px] rounded-b-[2.5rem] shadow-[0_40px_90px_-30px_rgba(27,11,58,0.5)]">
-								<?php
-								echo wp_get_attachment_image(
-									$home_hero_id,
-									'large',
-									false,
-									array(
-										'class'         => 'h-full w-full object-cover',
-										'loading'       => 'eager',
-										'fetchpriority' => 'high',
-									)
-								);
-								?>
-								<span class="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" aria-hidden="true"></span>
-							</div>
-						<?php else : ?>
-							<div class="amanah-hero-visual relative flex h-full w-full items-center justify-center overflow-hidden rounded-t-[999px] rounded-b-[2.5rem] shadow-[0_40px_90px_-30px_rgba(27,11,58,0.55)]">
-								<span class="amanah-hero-visual__ring amanah-hero-visual__ring--one" aria-hidden="true"></span>
-								<span class="amanah-hero-visual__ring amanah-hero-visual__ring--two" aria-hidden="true"></span>
-								<span class="amanah-hero-visual__ring amanah-hero-visual__ring--three" aria-hidden="true"></span>
-								<div class="relative flex h-[62%] w-[62%] items-center justify-center rounded-full bg-white shadow-[0_30px_70px_rgba(12,4,28,0.35)]">
-									<img
-										src="<?php echo esc_url( amanahcareservices_get_logo_url( 'mark' ) ); ?>"
-										alt=""
-										width="343"
-										height="363"
-										class="amanah-float h-auto w-[62%]"
-										decoding="async">
-								</div>
-								<p class="absolute bottom-8 left-0 right-0 text-center font-display text-lg tracking-[0.3em] text-white/85"><?php esc_html_e( 'AMANAH', 'amanahcareservices' ); ?></p>
-							</div>
-						<?php endif; ?>
-
-						<!-- Floating cards -->
-						<div class="amanah-float-slow absolute -left-4 top-[18%] flex items-center gap-3 rounded-2xl border border-white/70 bg-white/90 p-3.5 pr-5 shadow-[0_20px_50px_rgba(27,11,58,0.16)] backdrop-blur sm:-left-10">
-							<span class="flex h-11 w-11 items-center justify-center rounded-xl bg-soft text-primary"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i></span>
-							<span class="leading-tight">
-								<span class="block text-sm font-extrabold text-ink"><?php esc_html_e( 'Your plan, your pace', 'amanahcareservices' ); ?></span>
-								<span class="block text-xs font-medium text-body"><?php esc_html_e( 'Support that fits your life', 'amanahcareservices' ); ?></span>
-							</span>
-						</div>
-
-						<div class="amanah-float absolute -right-3 bottom-[14%] max-w-[230px] rounded-2xl border border-white/70 bg-white/95 p-4 shadow-[0_20px_50px_rgba(27,11,58,0.16)] backdrop-blur sm:-right-8">
-							<p class="font-display text-2xl leading-none text-primary" lang="ar" dir="rtl">أمانة</p>
-							<p class="mt-2 text-xs font-semibold leading-5 text-body">
-								<span class="font-extrabold text-ink"><?php esc_html_e( 'Amanah', 'amanahcareservices' ); ?></span>
-								<?php esc_html_e( '— trust, honesty and a responsibility held with care.', 'amanahcareservices' ); ?>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php get_template_part( 'template-parts/content', 'hero' ); ?>
 
 	<!-- =========================================================
 	     Values strip
 	     ========================================================= -->
-	<section class="relative z-10 -mt-16 px-5 md:px-8 lg:-mt-20 lg:px-12" aria-label="<?php esc_attr_e( 'Our values', 'amanahcareservices' ); ?>">
+	<section class="relative bg-white px-5 pt-14 md:px-8 lg:px-12 lg:pt-16" aria-label="<?php esc_attr_e( 'Our values', 'amanahcareservices' ); ?>">
 		<div class="container mx-auto">
 			<ul class="grid overflow-hidden rounded-[2rem] border border-[#ece6f6] bg-white shadow-[0_30px_70px_-20px_rgba(27,11,58,0.18)] sm:grid-cols-2 lg:grid-cols-4" data-reveal>
 				<?php foreach ( $home_values as $index => $value ) : ?>
@@ -624,111 +491,6 @@ for ( $i = 1; $i <= 3; $i++ ) {
 </main>
 
 <style>
-	/* Hero */
-	.amanah-hero {
-		background:
-			radial-gradient(circle at 85% 20%, rgba(155, 224, 143, 0.22), transparent 30%),
-			radial-gradient(circle at 10% 10%, rgba(201, 182, 240, 0.45), transparent 35%),
-			linear-gradient(180deg, #f8f5fe 0%, #ffffff 100%);
-	}
-
-	.amanah-hero-art {
-		position: absolute;
-		z-index: -1;
-		inset: 0;
-		overflow: hidden;
-		pointer-events: none;
-	}
-
-	.amanah-hero-art>* {
-		position: absolute;
-		display: block;
-	}
-
-	.amanah-hero-art__glow {
-		border-radius: 9999px;
-		filter: blur(90px);
-	}
-
-	.amanah-hero-art__glow--purple {
-		top: -8rem;
-		right: 25%;
-		width: 26rem;
-		height: 26rem;
-		background: rgba(124, 77, 206, 0.14);
-	}
-
-	.amanah-hero-art__glow--green {
-		bottom: 0;
-		left: -6rem;
-		width: 20rem;
-		height: 20rem;
-		background: rgba(46, 162, 42, 0.09);
-	}
-
-	.amanah-hero-art__grid {
-		inset: 0;
-		background-image:
-			linear-gradient(rgba(81, 31, 159, 0.05) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(81, 31, 159, 0.05) 1px, transparent 1px);
-		background-size: 3.5rem 3.5rem;
-		-webkit-mask-image: radial-gradient(ellipse at 30% 40%, #000 10%, transparent 65%);
-		mask-image: radial-gradient(ellipse at 30% 40%, #000 10%, transparent 65%);
-	}
-
-	.amanah-hero-art__heart {
-		bottom: 3rem;
-		left: 44%;
-		width: 9rem;
-		stroke: rgba(46, 162, 42, 0.18);
-		stroke-width: 2;
-		stroke-dasharray: 6 8;
-		transform: rotate(-12deg);
-	}
-
-	.amanah-hero-visual {
-		background:
-			radial-gradient(circle at 50% 42%, rgba(155, 224, 143, 0.35), transparent 45%),
-			linear-gradient(160deg, #6a2fc4 0%, #511f9f 45%, #2a0f5a 100%);
-	}
-
-	.amanah-hero-visual__ring {
-		position: absolute;
-		top: 44%;
-		left: 50%;
-		border: 1px solid rgba(255, 255, 255, 0.14);
-		border-radius: 9999px;
-		transform: translate(-50%, -50%);
-	}
-
-	.amanah-hero-visual__ring--one {
-		width: 78%;
-		aspect-ratio: 1;
-	}
-
-	.amanah-hero-visual__ring--two {
-		width: 98%;
-		aspect-ratio: 1;
-		border-style: dashed;
-		border-color: rgba(155, 224, 143, 0.3);
-		animation: amanahSpin 60s linear infinite;
-	}
-
-	.amanah-hero-visual__ring--three {
-		width: 125%;
-		aspect-ratio: 1;
-		border-color: rgba(255, 255, 255, 0.08);
-	}
-
-	.amanah-hero-visual .rounded-full.bg-white {
-		margin-top: -8%;
-	}
-
-	@keyframes amanahSpin {
-		to {
-			transform: translate(-50%, -50%) rotate(360deg);
-		}
-	}
 
 	/* About */
 	.amanah-meaning-card {
@@ -822,8 +584,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	@media (prefers-reduced-motion: reduce) {
 
 		.amanah-float,
-		.amanah-float-slow,
-		.amanah-hero-visual__ring--two {
+		.amanah-float-slow {
 			animation: none;
 		}
 	}

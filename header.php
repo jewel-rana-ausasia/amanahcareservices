@@ -402,11 +402,12 @@ $amanah_socials = amanahcareservices_get_social_links();
 							<?php endif; ?>
 
 							<a href="<?php echo esc_url( $amanah_contact['referral_url'] ); ?>"
-								class="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-primary to-primaryDark py-2.5 pl-6 pr-2.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-white shadow-[0_12px_28px_rgba(81,31,159,0.28)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(81,31,159,0.36)]">
-								<span class="relative z-10"><?php esc_html_e( 'Make a Referral', 'amanahcareservices' ); ?></span>
-								<span class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-secondary transition-transform duration-300 group-hover:translate-x-0.5">
-									<i class="fa-solid fa-arrow-right text-[11px]" aria-hidden="true"></i>
+								class="group relative inline-flex min-h-[50px] items-center justify-center overflow-hidden rounded-md bg-primary px-6 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white shadow-[0_14px_32px_rgba(81,31,159,.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-primaryDark hover:shadow-[0_18px_38px_rgba(81,31,159,.36)]">
+								<span><?php esc_html_e( 'Make a Referral', 'amanahcareservices' ); ?></span>
+								<span class="ml-3 flex items-center">
+									<i class="fa-solid fa-arrow-right text-[12px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i>
 								</span>
+								<span class="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-secondary transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
 							</a>
 						</div>
 
@@ -438,7 +439,7 @@ $amanah_socials = amanahcareservices_get_social_links();
 						</nav>
 
 						<div class="grid gap-3 sm:grid-cols-2">
-							<a class="flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-primary to-primaryDark py-4 text-xs font-extrabold uppercase tracking-[0.14em] text-white shadow-lg shadow-primary/20"
+							<a class="flex min-h-[50px] items-center justify-center gap-3 rounded-md bg-primary text-[11px] font-extrabold uppercase tracking-[0.14em] text-white shadow-lg shadow-primary/20 transition hover:bg-primaryDark"
 								href="<?php echo esc_url( $amanah_contact['referral_url'] ); ?>">
 								<?php esc_html_e( 'Make a Referral', 'amanahcareservices' ); ?>
 								<i class="fa-solid fa-arrow-right text-[10px]" aria-hidden="true"></i>

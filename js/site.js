@@ -8,6 +8,15 @@
 	const openIcon = document.getElementById( 'menu-open' );
 	const closeIcon = document.getElementById( 'menu-close' );
 
+	// Expose the full header height (top bar + main bar) so the hero can fill the rest of the screen.
+	const topHeader = document.getElementById( 'top-header' );
+	const setHeaderHeight = function () {
+		const height = ( topHeader ? topHeader.offsetHeight : 0 ) + ( header ? header.offsetHeight : 0 );
+		document.documentElement.style.setProperty( '--amanah-header-h', height + 'px' );
+	};
+	setHeaderHeight();
+	window.addEventListener( 'resize', setHeaderHeight );
+
 	if ( header ) {
 		const updateHeader = function () {
 			header.classList.toggle( 'is-scrolled', window.scrollY > 40 );
