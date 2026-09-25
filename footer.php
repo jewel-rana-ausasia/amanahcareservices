@@ -36,50 +36,19 @@ $footer_service_links = amanahcareservices_get_menu_links(
 		<span class="amanah-footer-art__line"></span>
 		<span class="amanah-footer-art__glow amanah-footer-art__glow--purple"></span>
 		<span class="amanah-footer-art__glow amanah-footer-art__glow--green"></span>
-		<span class="amanah-footer-art__ring amanah-footer-art__ring--one"></span>
-		<span class="amanah-footer-art__ring amanah-footer-art__ring--two"></span>
-		<span class="amanah-footer-art__dots"></span>
 	</div>
 
 	<div class="container relative z-10 mx-auto px-5 pt-16 md:px-8 lg:px-12 lg:pt-20">
-		<!-- CTA band -->
-		<div class="relative mb-16 overflow-hidden rounded-[2rem] bg-gradient-to-r from-primary via-[#5d27b0] to-primaryDark px-6 py-9 shadow-[0_30px_70px_rgba(0,0,0,0.3)] md:px-10 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:px-14 lg:py-11">
-			<span class="pointer-events-none absolute -right-14 -top-24 h-64 w-64 rounded-full border-[42px] border-white/[0.07]" aria-hidden="true"></span>
-			<span class="pointer-events-none absolute -bottom-20 left-1/4 h-40 w-72 rounded-full bg-secondary/30 blur-3xl" aria-hidden="true"></span>
-			<div class="relative max-w-2xl">
-				<p class="mb-3 flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.22em] text-leaf">
-					<i class="fa-solid fa-heart" aria-hidden="true"></i>
-					<?php esc_html_e( 'Support starts with a conversation', 'amanahcareservices' ); ?>
-				</p>
-				<h2 class="text-2xl font-extrabold leading-tight tracking-[-0.02em] text-white md:text-[2rem]">
-					<?php esc_html_e( 'Ready to talk about the support you need?', 'amanahcareservices' ); ?>
-				</h2>
-			</div>
-			<div class="relative mt-7 flex flex-col gap-3 sm:flex-row lg:mt-0 lg:shrink-0">
-				<a href="<?php echo esc_url( $footer_contact['cta_url'] ); ?>"
-					class="group inline-flex items-center justify-center gap-3 rounded-full bg-white py-2.5 pl-6 pr-2.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-primary shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-mint">
-					<?php esc_html_e( 'Get in Touch', 'amanahcareservices' ); ?>
-					<span class="flex h-8 w-8 items-center justify-center rounded-full bg-secondary text-white transition-transform group-hover:translate-x-0.5">
-						<i class="fa-solid fa-arrow-right text-[11px]" aria-hidden="true"></i>
-					</span>
-				</a>
-				<a href="<?php echo esc_url( $footer_contact['referral_url'] ); ?>"
-					class="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-white transition duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white/10">
-					<?php esc_html_e( 'Make a Referral', 'amanahcareservices' ); ?>
-				</a>
-			</div>
-		</div>
-
-		<div class="grid grid-cols-1 gap-10 pb-14 md:grid-cols-2 xl:grid-cols-12 xl:gap-8">
+		<div class="grid grid-cols-1 gap-10 pb-14 md:grid-cols-2 xl:grid-cols-10 xl:gap-8">
 			<!-- Brand -->
-			<div class="xl:col-span-4">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-block rounded-[1.5rem] bg-white p-4 shadow-[0_18px_40px_rgba(0,0,0,0.25)] transition hover:-translate-y-0.5">
+			<div class="xl:col-span-3">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-block rounded-2xl bg-white p-3 shadow-[0_18px_40px_rgba(0,0,0,0.25)] transition hover:-translate-y-0.5">
 					<img
 						src="<?php echo esc_url( amanahcareservices_get_logo_url( 'stacked' ) ); ?>"
 						alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
 						width="593"
 						height="615"
-						class="h-32 w-auto md:h-36"
+						class="h-20 w-auto md:h-24"
 						loading="lazy"
 						decoding="async">
 				</a>
@@ -132,7 +101,7 @@ $footer_service_links = amanahcareservices_get_menu_links(
 			</div>
 
 			<!-- Contact -->
-			<div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 md:p-8 xl:col-span-4">
+			<div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 md:p-8 xl:col-span-3">
 				<span class="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-leaf/60 to-transparent" aria-hidden="true"></span>
 				<h2 class="text-xl font-extrabold text-white"><?php esc_html_e( 'Get In Touch', 'amanahcareservices' ); ?></h2>
 
@@ -203,18 +172,6 @@ $footer_service_links = amanahcareservices_get_menu_links(
 			</div>
 		</div>
 
-		<!-- Acknowledgement of Country -->
-		<div class="flex flex-col gap-4 border-t border-white/10 py-8 md:flex-row md:items-center">
-			<span class="flex shrink-0 gap-1.5" aria-hidden="true">
-				<span class="h-2.5 w-2.5 rounded-full bg-[#1a1a1a] ring-1 ring-white/20"></span>
-				<span class="h-2.5 w-2.5 rounded-full bg-[#c8102e]"></span>
-				<span class="h-2.5 w-2.5 rounded-full bg-[#ffcd00]"></span>
-			</span>
-			<p class="text-xs leading-6 text-white/65">
-				<?php esc_html_e( 'We acknowledge the Traditional Custodians of the lands on which we live and work, and pay our respects to Elders past and present. We welcome people of all cultures, abilities, genders and backgrounds.', 'amanahcareservices' ); ?>
-			</p>
-		</div>
-
 		<div class="flex flex-col items-center justify-between gap-3 border-t border-white/10 py-7 text-center text-xs text-white/65 md:flex-row md:text-left">
 			<p>
 				&copy; <?php echo esc_html( wp_date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. <?php esc_html_e( 'All rights reserved.', 'amanahcareservices' ); ?>
@@ -283,40 +240,6 @@ $footer_service_links = amanahcareservices_get_menu_links(
 		background: rgba(46, 162, 42, 0.1);
 	}
 
-	.amanah-footer-art__ring {
-		border: 1px solid rgba(201, 182, 240, 0.09);
-		border-radius: 50%;
-	}
-
-	.amanah-footer-art__ring--one {
-		right: -20rem;
-		bottom: -26rem;
-		width: 56rem;
-		height: 44rem;
-		transform: rotate(-16deg);
-	}
-
-	.amanah-footer-art__ring--two {
-		bottom: -30rem;
-		left: -18rem;
-		width: 52rem;
-		height: 40rem;
-		border-color: rgba(155, 224, 143, 0.07);
-		transform: rotate(12deg);
-	}
-
-	.amanah-footer-art__dots {
-		top: 24rem;
-		right: 3rem;
-		width: 11rem;
-		height: 11rem;
-		opacity: 0.2;
-		background-image: radial-gradient(circle, #c9b6f0 1.4px, transparent 1.7px);
-		background-size: 1.3rem 1.3rem;
-		-webkit-mask-image: linear-gradient(135deg, #000, transparent 78%);
-		mask-image: linear-gradient(135deg, #000, transparent 78%);
-	}
-
 	.amanah-footer-links {
 		margin: 0;
 		padding: 0;
@@ -363,14 +286,6 @@ $footer_service_links = amanahcareservices_get_menu_links(
 		border-radius: 9999px;
 		background: linear-gradient(90deg, #2ea22a, transparent);
 		content: "";
-	}
-
-	@media (max-width: 767px) {
-
-		.amanah-footer-art__dots,
-		.amanah-footer-art__ring--two {
-			display: none;
-		}
 	}
 </style>
 
