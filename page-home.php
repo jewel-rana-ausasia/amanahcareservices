@@ -23,10 +23,10 @@ $home_values = array(
 );
 
 $home_steps = array(
-	array( 'title' => 'Reach out', 'text' => 'Call, email or send a referral. We’ll get back to you quickly and answer your questions in plain language.' ),
-	array( 'title' => 'Get to know you', 'text' => 'We meet with you, and anyone you’d like involved, to understand your goals, routines and preferences.' ),
-	array( 'title' => 'Plan your support', 'text' => 'Together we agree on a support plan and match you with workers who suit your needs and personality.' ),
-	array( 'title' => 'Start & review', 'text' => 'Support begins, and we check in regularly so it keeps working as your life and goals change.' ),
+	array( 'icon' => 'fa-phone-volume', 'title' => 'Reach out', 'text' => 'Call, email or send a referral. We’ll get back to you quickly and answer your questions in plain language.' ),
+	array( 'icon' => 'fa-comments', 'title' => 'Get to know you', 'text' => 'We meet with you, and anyone you’d like involved, to understand your goals, routines and preferences.' ),
+	array( 'icon' => 'fa-clipboard-list', 'title' => 'Plan your support', 'text' => 'Together we agree on a support plan and match you with workers who suit your needs and personality.' ),
+	array( 'icon' => 'fa-circle-check', 'title' => 'Start & review', 'text' => 'Support begins, and we check in regularly so it keeps working as your life and goals change.' ),
 );
 
 $home_reasons = array(
@@ -196,50 +196,92 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	     Services
 	     ========================================================= -->
 	<section id="services" class="amanah-services relative isolate overflow-hidden py-20 sm:py-24 lg:py-28" aria-labelledby="home-services-title">
-		<div class="container relative mx-auto px-5 md:px-8 lg:px-12">
-			<div class="mb-14 flex flex-col justify-between gap-7 lg:flex-row lg:items-end" data-reveal>
-				<div class="max-w-2xl">
-					<p class="amanah-eyebrow"><?php esc_html_e( 'How we can help', 'amanahcareservices' ); ?></p>
+		<div class="container relative mx-auto px-4 md:px-6">
+			<div class="mx-auto mb-12 max-w-3xl text-center lg:mb-14" data-reveal>
+				<div class="flex flex-col items-center">
+					<p class="amanah-eyebrow justify-center"><?php esc_html_e( 'How we can help', 'amanahcareservices' ); ?></p>
 					<h2 id="home-services-title" class="mt-5 text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] text-ink md:text-5xl">
 						<?php esc_html_e( 'Support for everyday life,', 'amanahcareservices' ); ?>
 						<span class="text-secondaryDark"><?php esc_html_e( 'shaped around you.', 'amanahcareservices' ); ?></span>
 					</h2>
+					<p class="mx-auto mt-6 max-w-2xl text-base leading-7 text-body">
+						<?php
+						echo esc_html(
+							sprintf(
+								/* translators: %d: number of NDIS registration groups. */
+								__( 'We are registered to deliver %d NDIS support categories. Combine and adjust them as your goals change, always with patience, respect and care.', 'amanahcareservices' ),
+								count( $home_services )
+							)
+						);
+						?>
+					</p>
 				</div>
-				<p class="max-w-md text-base leading-7 text-body">
-					<?php esc_html_e( 'Flexible services you can combine and adjust as your goals change, always delivered with patience, respect and care.', 'amanahcareservices' ); ?>
-				</p>
 			</div>
 
-			<div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-				<?php foreach ( $home_services as $index => $service ) : ?>
-					<?php $is_green = 1 === $index % 2; ?>
-					<article class="amanah-service-card group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-[#ece6f6] bg-white p-7 shadow-[0_12px_35px_-15px_rgba(27,11,58,0.12)] transition duration-500 hover:-translate-y-2 hover:border-transparent hover:shadow-[0_30px_60px_-20px_rgba(81,31,159,0.35)]" data-reveal>
-						<span class="amanah-service-card__bg absolute inset-0 -z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true"></span>
-						<div class="relative flex items-start justify-between">
-							<span class="flex h-14 w-14 items-center justify-center rounded-2xl <?php echo $is_green ? 'bg-mint text-secondaryDark' : 'bg-soft text-primary'; ?> transition duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:bg-white/15 group-hover:text-white">
-								<i class="fa-solid <?php echo esc_attr( $service['icon'] ); ?> text-xl" aria-hidden="true"></i>
-							</span>
-							<span class="font-display text-2xl text-[#d9cff0] transition group-hover:text-white/40"><?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
-						</div>
-						<h3 class="relative mt-7 text-xl font-extrabold text-ink transition group-hover:text-white">
-							<a href="<?php echo esc_url( $service['url'] ); ?>" class="after:absolute after:inset-0 after:content-['']"><?php echo esc_html( $service['title'] ); ?></a>
-						</h3>
-						<p class="relative mt-3 flex-1 text-sm leading-7 text-body transition group-hover:text-white/80"><?php echo esc_html( $service['description'] ); ?></p>
-						<span class="relative mt-6 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.14em] <?php echo $is_green ? 'text-secondaryDark' : 'text-primary'; ?> transition group-hover:text-leaf" aria-hidden="true">
-							<?php esc_html_e( 'Learn more', 'amanahcareservices' ); ?>
-							<i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
-						</span>
-					</article>
-				<?php endforeach; ?>
+			<div class="amanah-services-carousel relative" data-reveal>
+				<button type="button" class="amanah-services-prev amanah-slider-btn amanah-slider-btn--prev" aria-label="<?php esc_attr_e( 'Previous service', 'amanahcareservices' ); ?>">
+					<i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+				</button>
+				<button type="button" class="amanah-services-next amanah-slider-btn amanah-slider-btn--next" aria-label="<?php esc_attr_e( 'Next service', 'amanahcareservices' ); ?>">
+					<i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+				</button>
+
+				<div class="amanah-services-slider swiper">
+					<div class="swiper-wrapper">
+						<?php foreach ( $home_services as $index => $service ) : ?>
+							<?php $is_green = 1 === $index % 2; ?>
+							<div class="swiper-slide">
+								<article class="amanah-service-card group" aria-labelledby="home-service-<?php echo esc_attr( $service['slug'] ); ?>">
+									<div class="amanah-service-card__media <?php echo $is_green ? 'is-green' : ''; ?>">
+										<?php if ( $service['image'] ) : ?>
+											<img src="<?php echo esc_url( $service['image'] ); ?>" alt="" loading="lazy" decoding="async" class="amanah-service-card__img">
+										<?php else : ?>
+											<span class="amanah-service-card__placeholder" aria-hidden="true">
+												<i class="fa-solid <?php echo esc_attr( $service['icon'] ); ?>"></i>
+											</span>
+										<?php endif; ?>
+										<span class="amanah-service-card__shade" aria-hidden="true"></span>
+	
+										<?php if ( ! empty( $service['code'] ) ) : ?>
+											<span class="amanah-service-card__code">
+												<span class="sr-only"><?php esc_html_e( 'NDIS registration group', 'amanahcareservices' ); ?></span>
+												<span aria-hidden="true">NDIS</span> <?php echo esc_html( $service['code'] ); ?>
+											</span>
+										<?php endif; ?>
+										<span class="amanah-service-card__num" aria-hidden="true"><?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
+									</div>
+	
+									<div class="amanah-service-card__body">
+										<span class="amanah-service-card__icon <?php echo $is_green ? 'is-green' : ''; ?>" aria-hidden="true">
+											<i class="fa-solid <?php echo esc_attr( $service['icon'] ); ?>"></i>
+										</span>
+	
+										<h3 id="home-service-<?php echo esc_attr( $service['slug'] ); ?>" class="mt-5 text-lg font-extrabold leading-snug text-ink transition-colors group-hover:text-primary">
+											<a href="<?php echo esc_url( $service['url'] ); ?>" class="after:absolute after:inset-0 after:z-[3] after:rounded-[1.75rem] after:content-[''] focus:outline-none"><?php echo esc_html( $service['title'] ); ?></a>
+										</h3>
+										<p class="mt-3 line-clamp-3 flex-1 text-sm leading-7 text-body"><?php echo esc_html( $service['description'] ); ?></p>
+	
+										<span class="mt-6 flex items-center justify-between border-t border-[#f0ebf8] pt-5" aria-hidden="true">
+											<span class="text-[11px] font-extrabold uppercase tracking-[0.16em] <?php echo $is_green ? 'text-secondaryDark' : 'text-primary'; ?>"><?php esc_html_e( 'Explore service', 'amanahcareservices' ); ?></span>
+											<span class="amanah-service-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
+										</span>
+									</div>
+								</article>
+							</div>
+						<?php endforeach; ?>
+					</div>
+				</div>
 			</div>
 
-			<div class="mt-14 flex justify-center">
+			<div class="mt-10 flex flex-col items-center gap-8">
+				<div class="amanah-services-pagination"></div>
 				<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"
-					class="group inline-flex items-center gap-3 rounded-full bg-ink py-3 pl-7 pr-3 text-[12px] font-extrabold uppercase tracking-[0.14em] text-white shadow-[0_16px_36px_rgba(27,11,58,0.25)] transition duration-300 hover:-translate-y-0.5 hover:bg-primary">
-					<?php esc_html_e( 'View all services', 'amanahcareservices' ); ?>
-					<span class="flex h-9 w-9 items-center justify-center rounded-full bg-secondary transition-transform group-hover:translate-x-0.5">
-						<i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+					class="group relative inline-flex min-h-[50px] items-center justify-center overflow-hidden rounded-md bg-primary px-7 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white shadow-[0_14px_32px_rgba(81,31,159,.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-primaryDark hover:shadow-[0_18px_38px_rgba(81,31,159,.36)]">
+					<span><?php esc_html_e( 'View all services', 'amanahcareservices' ); ?></span>
+					<span class="ml-3 flex items-center">
+						<i class="fa-solid fa-arrow-right text-[12px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i>
 					</span>
+					<span class="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-secondary transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
 				</a>
 			</div>
 		</div>
@@ -249,11 +291,6 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	     Process
 	     ========================================================= -->
 	<section class="amanah-process relative isolate overflow-hidden py-20 text-white sm:py-24 lg:py-28" aria-labelledby="home-process-title">
-		<div class="amanah-process-art" aria-hidden="true">
-			<span class="amanah-process-art__ring amanah-process-art__ring--one"></span>
-			<span class="amanah-process-art__ring amanah-process-art__ring--two"></span>
-			<span class="amanah-process-art__dots"></span>
-		</div>
 		<div class="container relative mx-auto px-5 md:px-8 lg:px-12">
 			<div class="mx-auto max-w-3xl text-center" data-reveal>
 				<p class="amanah-eyebrow amanah-eyebrow--light justify-center"><?php esc_html_e( 'Getting started', 'amanahcareservices' ); ?></p>
@@ -264,28 +301,40 @@ for ( $i = 1; $i <= 3; $i++ ) {
 				<p class="mt-6 text-lg leading-8 text-white/70"><?php esc_html_e( 'Four friendly steps, with our team beside you the whole way.', 'amanahcareservices' ); ?></p>
 			</div>
 
-			<ol class="relative mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-				<span class="pointer-events-none absolute left-[12%] right-[12%] top-10 hidden h-px bg-gradient-to-r from-transparent via-white/25 to-transparent xl:block" aria-hidden="true"></span>
+			<ol class="relative mt-16 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
 				<?php foreach ( $home_steps as $index => $step ) : ?>
-					<li class="group relative rounded-[1.75rem] border border-white/10 bg-white/[0.05] p-7 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-leaf/40 hover:bg-white/[0.08]" data-reveal>
-						<span class="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl font-display text-xl <?php echo 0 === $index % 2 ? 'bg-gradient-to-br from-[#7b4dd1] to-primary text-white' : 'bg-gradient-to-br from-leaf to-secondary text-ink'; ?> shadow-lg ring-8 ring-ink/40">
-							<?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?>
-						</span>
-						<h3 class="mt-7 text-xl font-extrabold"><?php echo esc_html( $step['title'] ); ?></h3>
-						<p class="mt-3 text-[15px] leading-7 text-white/70"><?php echo esc_html( $step['text'] ); ?></p>
+					<?php $is_green = 1 === $index % 2; ?>
+					<li class="amanah-step-card group <?php echo $is_green ? 'is-green' : ''; ?>" data-reveal>
+						<div class="relative flex items-center justify-between">
+							<span class="amanah-step-card__icon" aria-hidden="true">
+								<span class="amanah-step-card__icon-tile"><i class="fa-solid <?php echo esc_attr( $step['icon'] ); ?>"></i></span>
+							</span>
+							<?php if ( $index < count( $home_steps ) - 1 ) : ?>
+								<span class="amanah-step-card__next hidden xl:flex" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
+							<?php endif; ?>
+						</div>
+
+						<h3 class="relative mt-7 text-xl font-extrabold tracking-[-0.01em]"><?php echo esc_html( $step['title'] ); ?></h3>
+						<p class="relative mt-3 text-[15px] leading-7 text-white/70"><?php echo esc_html( $step['text'] ); ?></p>
 					</li>
 				<?php endforeach; ?>
 			</ol>
 
 			<div class="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row" data-reveal>
-				<a href="<?php echo esc_url( $home_contact['cta_url'] ); ?>" class="group inline-flex items-center gap-3 rounded-full bg-white py-3 pl-7 pr-3 text-[12px] font-extrabold uppercase tracking-[0.14em] text-primary shadow-xl transition duration-300 hover:-translate-y-0.5 hover:bg-mint">
-					<?php esc_html_e( 'Start the conversation', 'amanahcareservices' ); ?>
-					<span class="flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-white transition-transform group-hover:translate-x-0.5"><i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i></span>
+				<a href="<?php echo esc_url( $home_contact['cta_url'] ); ?>"
+					class="group relative inline-flex min-h-[50px] items-center justify-center overflow-hidden rounded-md bg-white px-7 text-[11px] font-extrabold uppercase tracking-[0.14em] text-primary shadow-[0_14px_32px_rgba(0,0,0,.25)] transition duration-300 hover:-translate-y-0.5 hover:bg-soft">
+					<span><?php esc_html_e( 'Start the conversation', 'amanahcareservices' ); ?></span>
+					<span class="ml-3 flex items-center">
+						<i class="fa-solid fa-arrow-right text-[12px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i>
+					</span>
+					<span class="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-secondary transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
 				</a>
 				<?php if ( $home_phone['label'] ) : ?>
-					<a href="<?php echo esc_attr( $home_phone['uri'] ); ?>" class="inline-flex items-center gap-3 rounded-full border border-white/25 px-7 py-4 text-sm font-extrabold text-white transition hover:border-white hover:bg-white/10">
-						<i class="fa-solid fa-phone text-leaf" aria-hidden="true"></i>
-						<?php echo esc_html( $home_phone['label'] ); ?>
+					<a href="<?php echo esc_attr( $home_phone['uri'] ); ?>"
+						class="group relative inline-flex min-h-[50px] items-center justify-center gap-3 overflow-hidden rounded-md border border-white/25 px-7 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white transition duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10">
+						<i class="fa-solid fa-phone text-[12px] text-leaf" aria-hidden="true"></i>
+						<span><?php echo esc_html( $home_phone['label'] ); ?></span>
+						<span class="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-leaf transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
 					</a>
 				<?php endif; ?>
 			</div>
@@ -356,16 +405,13 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	<section class="py-20 sm:py-24 lg:py-28" aria-labelledby="home-audience-title">
 		<div class="container mx-auto px-5 md:px-8 lg:px-12">
 			<div class="amanah-audience relative overflow-hidden rounded-[2.5rem] px-6 py-14 sm:px-10 lg:px-16 lg:py-20" data-reveal>
-				<span class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full border-[50px] border-primary/[0.06]" aria-hidden="true"></span>
-				<div class="relative grid items-end gap-8 lg:grid-cols-2">
-					<div>
-						<p class="amanah-eyebrow"><?php esc_html_e( 'Who we support', 'amanahcareservices' ); ?></p>
-						<h2 id="home-audience-title" class="mt-5 text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] text-ink md:text-[2.75rem]">
-							<?php esc_html_e( 'Working together for', 'amanahcareservices' ); ?>
-							<span class="text-primary"><?php esc_html_e( 'better outcomes.', 'amanahcareservices' ); ?></span>
-						</h2>
-					</div>
-					<p class="text-base leading-7 text-body lg:justify-self-end lg:text-right">
+				<div class="relative mx-auto max-w-3xl text-center">
+					<p class="amanah-eyebrow justify-center"><?php esc_html_e( 'Who we support', 'amanahcareservices' ); ?></p>
+					<h2 id="home-audience-title" class="mt-5 text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] text-ink md:text-[2.75rem]">
+						<?php esc_html_e( 'Working together for', 'amanahcareservices' ); ?>
+						<span class="text-primary"><?php esc_html_e( 'better outcomes.', 'amanahcareservices' ); ?></span>
+					</h2>
+					<p class="mx-auto mt-6 max-w-2xl text-base leading-7 text-body">
 						<?php esc_html_e( 'Referrals are welcome from participants, families, support coordinators, plan managers and health professionals.', 'amanahcareservices' ); ?>
 					</p>
 				</div>
@@ -382,14 +428,22 @@ for ( $i = 1; $i <= 3; $i++ ) {
 					<?php endforeach; ?>
 				</div>
 
-				<div class="relative mt-10 flex flex-wrap items-center gap-4">
-					<a href="<?php echo esc_url( $home_contact['referral_url'] ); ?>" class="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-primary to-primaryDark py-3 pl-7 pr-3 text-[12px] font-extrabold uppercase tracking-[0.14em] text-white shadow-[0_16px_36px_rgba(81,31,159,0.3)] transition duration-300 hover:-translate-y-0.5">
-						<?php esc_html_e( 'Make a Referral', 'amanahcareservices' ); ?>
-						<span class="flex h-9 w-9 items-center justify-center rounded-full bg-secondary transition-transform group-hover:translate-x-0.5"><i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i></span>
+				<div class="relative mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+					<a href="<?php echo esc_url( $home_contact['referral_url'] ); ?>"
+						class="group relative inline-flex min-h-[50px] items-center justify-center overflow-hidden rounded-md bg-primary px-7 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white shadow-[0_14px_32px_rgba(81,31,159,.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-primaryDark hover:shadow-[0_18px_38px_rgba(81,31,159,.36)]">
+						<span><?php esc_html_e( 'Make a Referral', 'amanahcareservices' ); ?></span>
+						<span class="ml-3 flex items-center">
+							<i class="fa-solid fa-arrow-right text-[12px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i>
+						</span>
+						<span class="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-secondary transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
 					</a>
-					<a href="<?php echo esc_url( home_url( '/ndis/' ) ); ?>" class="inline-flex items-center gap-2 px-3 py-3 text-sm font-extrabold text-primary transition hover:text-secondaryDark">
-						<?php esc_html_e( 'New to the NDIS? Start here', 'amanahcareservices' ); ?>
-						<i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+					<a href="<?php echo esc_url( home_url( '/ndis/' ) ); ?>"
+						class="group relative inline-flex min-h-[50px] items-center justify-center overflow-hidden rounded-md border border-primary/25 bg-white px-7 text-[11px] font-extrabold uppercase tracking-[0.14em] text-primary shadow-[0_10px_24px_-12px_rgba(27,11,58,.2)] transition duration-300 hover:-translate-y-0.5 hover:border-primary/50">
+						<span><?php esc_html_e( 'New to the NDIS? Start here', 'amanahcareservices' ); ?></span>
+						<span class="ml-3 flex items-center">
+							<i class="fa-solid fa-arrow-right text-[12px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i>
+						</span>
+						<span class="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-secondary transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
 					</a>
 				</div>
 			</div>
@@ -499,7 +553,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	}
 
 
-	/* Services */
+	/* Services slider */
 	.amanah-services {
 		background:
 			radial-gradient(circle at 0% 0%, rgba(201, 182, 240, 0.3), transparent 30%),
@@ -507,17 +561,304 @@ for ( $i = 1; $i <= 3; $i++ ) {
 			#fdfcff;
 	}
 
-	.amanah-service-card>* {
-		position: relative;
-		z-index: 1;
+	.amanah-services-slider {
+		/* Room for hover lift and shadows inside Swiper's overflow clip. */
+		margin: -1.25rem 0 -2.5rem;
+		padding: 1.25rem 0 2.5rem;
 	}
 
-	.amanah-service-card .amanah-service-card__bg {
-		position: absolute;
-		z-index: 0;
+	.amanah-services-slider .swiper-slide {
+		height: auto;
+	}
+
+	/* Fallback before Swiper loads (or if it fails): a scrollable row. */
+	.amanah-services-slider:not(.swiper-initialized) .swiper-wrapper {
+		display: flex;
+		gap: 1.5rem;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+	}
+
+	.amanah-services-slider:not(.swiper-initialized) .swiper-slide {
+		flex: 0 0 min(85%, 20rem);
+		scroll-snap-align: start;
+	}
+
+	.amanah-service-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		overflow: hidden;
+		border: 1px solid #ece6f6;
+		border-radius: 1.75rem;
+		background: #ffffff;
+		box-shadow: 0 14px 38px -18px rgba(27, 11, 58, 0.18);
+		transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+	}
+
+	.amanah-service-card:hover,
+	.amanah-service-card:focus-within {
+		transform: translateY(-8px);
+		border-color: rgba(81, 31, 159, 0.18);
+		box-shadow: none;
+	}
+
+	.amanah-service-card:focus-within {
+		outline: 3px solid #2EA22A;
+		outline-offset: 3px;
+	}
+
+	.amanah-service-card__media {
+		position: relative;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		margin: 0.6rem 0.6rem 0;
+		border-radius: 1.35rem;
 		background:
 			radial-gradient(circle at 100% 0%, rgba(155, 224, 143, 0.35), transparent 45%),
-			linear-gradient(150deg, #5d27b0 0%, #3a1575 60%, #1b0b3a 100%);
+			linear-gradient(150deg, #6a31c2 0%, #3a1575 60%, #1b0b3a 100%);
+	}
+
+	.amanah-service-card__media.is-green {
+		background:
+			radial-gradient(circle at 0% 0%, rgba(201, 182, 240, 0.4), transparent 45%),
+			linear-gradient(150deg, #36b531 0%, #1e7a1b 60%, #124d11 100%);
+	}
+
+	.amanah-service-card__img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.amanah-service-card:hover .amanah-service-card__img {
+		transform: scale(1.07);
+	}
+
+	.amanah-service-card__placeholder {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 3.25rem;
+		background-image:
+			radial-gradient(circle at center, rgba(255, 255, 255, 0.14) 0 22%, transparent 22.5%),
+			radial-gradient(circle at center, transparent 0 34%, rgba(255, 255, 255, 0.07) 34.5% 35.5%, transparent 36%),
+			radial-gradient(circle at center, transparent 0 48%, rgba(255, 255, 255, 0.05) 48.5% 49.5%, transparent 50%);
+		transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.amanah-service-card:hover .amanah-service-card__placeholder {
+		transform: scale(1.08) rotate(-3deg);
+	}
+
+	.amanah-service-card__shade {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(180deg, rgba(27, 11, 58, 0.35) 0%, transparent 38%, transparent 60%, rgba(27, 11, 58, 0.45) 100%);
+		pointer-events: none;
+	}
+
+	.amanah-service-card__code {
+		position: absolute;
+		top: 0.85rem;
+		left: 0.85rem;
+		z-index: 2;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		padding: 0.4rem 0.8rem;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.16);
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
+		color: #ffffff;
+		font-size: 0.68rem;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+	}
+
+	.amanah-service-card__num {
+		position: absolute;
+		right: 1rem;
+		bottom: 0.6rem;
+		z-index: 2;
+		color: rgba(255, 255, 255, 0.85);
+		font-family: 'Marcellus', Georgia, serif;
+		font-size: 1.75rem;
+		line-height: 1;
+	}
+
+	.amanah-service-card__body {
+		position: relative;
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		padding: 0 1.6rem 1.6rem;
+	}
+
+	.amanah-service-card__icon {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3.5rem;
+		height: 3.5rem;
+		margin-top: -1.75rem;
+		border: 4px solid #ffffff;
+		border-radius: 1.1rem;
+		background: linear-gradient(145deg, #6a31c2, #3a1575);
+		box-shadow: 0 12px 24px -10px rgba(81, 31, 159, 0.6);
+		color: #ffffff;
+		font-size: 1.1rem;
+		transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.amanah-service-card__icon.is-green {
+		background: linear-gradient(145deg, #36b531, #1e7a1b);
+		box-shadow: 0 12px 24px -10px rgba(30, 122, 27, 0.6);
+	}
+
+	.amanah-service-card:hover .amanah-service-card__icon {
+		transform: rotate(-6deg) scale(1.06);
+	}
+
+	.amanah-service-card__arrow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 999px;
+		background: #F6F2FD;
+		color: #511F9F;
+		font-size: 0.75rem;
+		transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease;
+	}
+
+	.amanah-service-card:hover .amanah-service-card__arrow {
+		background: #511F9F;
+		color: #ffffff;
+		transform: rotate(-45deg);
+	}
+
+	/* Slider controls */
+	.amanah-slider-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3.25rem;
+		height: 3.25rem;
+		border: 1px solid #e0d6f2;
+		border-radius: 999px;
+		background: #ffffff;
+		color: #511F9F;
+		transition: all 0.3s ease;
+	}
+
+	/* Side arrows, vertically centred on the cards. */
+	.amanah-services-carousel .amanah-slider-btn {
+		position: absolute;
+		top: 50%;
+		z-index: 10;
+		box-shadow: 0 16px 32px -14px rgba(27, 11, 58, 0.45);
+		transform: translateY(-50%);
+	}
+
+	/*
+	 * Cards use the full container width; arrows sit outside it.
+	 * Below 1680px there is no room beside the container, so the arrows
+	 * tuck into the container gutter and just overlap the card edges.
+	 */
+	.amanah-slider-btn--prev {
+		left: -1.25rem;
+	}
+
+	.amanah-slider-btn--next {
+		right: -1.25rem;
+	}
+
+	@media (min-width: 1680px) {
+		.amanah-slider-btn--prev {
+			left: -5rem;
+		}
+
+		.amanah-slider-btn--next {
+			right: -5rem;
+		}
+	}
+
+	/* On phones, swipe and dots take over. */
+	@media (max-width: 639px) {
+		.amanah-services-carousel .amanah-slider-btn {
+			display: none;
+		}
+	}
+
+	/* Balance the centred eyebrow with a line on both sides. */
+	.amanah-services .amanah-eyebrow::after,
+	.amanah-audience .amanah-eyebrow::after {
+		width: 2.25rem;
+		height: 2px;
+		border-radius: 9999px;
+		background: linear-gradient(90deg, #2ea22a, #511f9f);
+		content: "";
+	}
+
+	.amanah-services-carousel .amanah-slider-btn:hover {
+		border-color: transparent;
+		background: linear-gradient(135deg, #511F9F, #3A1575);
+		color: #ffffff;
+		transform: translateY(-50%) scale(1.06);
+	}
+
+	.amanah-slider-btn:focus-visible {
+		outline: 3px solid #2EA22A;
+		outline-offset: 3px;
+	}
+
+	.amanah-slider-btn.swiper-button-disabled {
+		opacity: 0.4;
+		pointer-events: none;
+	}
+
+	.amanah-services-pagination.swiper-pagination-bullets {
+		position: static;
+		display: flex;
+		gap: 0.45rem;
+		width: auto;
+	}
+
+	.amanah-services-pagination .swiper-pagination-bullet {
+		width: 0.55rem;
+		height: 0.55rem;
+		margin: 0 !important;
+		background: #C9B6F0;
+		opacity: 1;
+		transition: width 0.4s ease, background 0.4s ease;
+	}
+
+	.amanah-services-pagination .swiper-pagination-bullet-active {
+		width: 2rem;
+		border-radius: 999px;
+		background: #511F9F;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.amanah-service-card,
+		.amanah-service-card__img,
+		.amanah-service-card__placeholder,
+		.amanah-service-card__icon {
+			transition: none;
+		}
 	}
 
 	/* Process */
@@ -528,50 +869,146 @@ for ( $i = 1; $i <= 3; $i++ ) {
 			linear-gradient(160deg, #2a0f5a 0%, #1b0b3a 70%);
 	}
 
-	.amanah-process-art {
-		position: absolute;
-		z-index: -1;
-		inset: 0;
+	.amanah-step-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
 		overflow: hidden;
-		pointer-events: none;
+		padding: 2rem 1.75rem 2.1rem;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 1.5rem;
+		background:
+			linear-gradient(160deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 55%, rgba(255, 255, 255, 0.04) 100%);
+		-webkit-backdrop-filter: blur(12px);
+		backdrop-filter: blur(12px);
+		transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, background 0.4s ease;
 	}
 
-	.amanah-process-art>span {
+	.amanah-step-card::after {
 		position: absolute;
-		display: block;
-	}
-
-	.amanah-process-art__ring {
-		border: 1px solid rgba(201, 182, 240, 0.12);
+		top: -5rem;
+		right: -5rem;
+		width: 12rem;
+		height: 12rem;
 		border-radius: 50%;
+		background: radial-gradient(circle, rgba(123, 77, 209, 0.35), transparent 70%);
+		content: "";
+		opacity: 0.5;
+		pointer-events: none;
+		transition: opacity 0.5s ease;
 	}
 
-	.amanah-process-art__ring--one {
-		top: -20rem;
-		right: -14rem;
-		width: 46rem;
-		height: 40rem;
-		transform: rotate(-14deg);
+	.amanah-step-card.is-green::after {
+		background: radial-gradient(circle, rgba(46, 162, 42, 0.3), transparent 70%);
 	}
 
-	.amanah-process-art__ring--two {
-		bottom: -22rem;
-		left: -14rem;
-		width: 44rem;
-		height: 36rem;
-		border-color: rgba(155, 224, 143, 0.1);
+	.amanah-step-card:hover {
+		transform: translateY(-6px);
+		border-color: rgba(201, 182, 240, 0.3);
+		background:
+			linear-gradient(160deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 55%, rgba(255, 255, 255, 0.06) 100%);
 	}
 
-	.amanah-process-art__dots {
-		top: 3rem;
-		left: 3rem;
-		width: 10rem;
-		height: 10rem;
-		opacity: 0.25;
-		background-image: radial-gradient(circle, #c9b6f0 1.4px, transparent 1.7px);
-		background-size: 1.3rem 1.3rem;
-		-webkit-mask-image: linear-gradient(135deg, #000, transparent 80%);
-		mask-image: linear-gradient(135deg, #000, transparent 80%);
+	.amanah-step-card.is-green:hover {
+		border-color: rgba(155, 224, 143, 0.3);
+	}
+
+	.amanah-step-card:hover::after {
+		opacity: 1;
+	}
+
+	/* Step icon: glass ring holding a glossy gradient tile. */
+	.amanah-step-card__icon {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3.5rem;
+		height: 3.5rem;
+		padding: 0.3rem;
+		border: 1px solid rgba(201, 182, 240, 0.22);
+		border-radius: 1.1rem;
+		background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+		box-shadow: 0 20px 40px -18px rgba(123, 77, 209, 0.8);
+		transition: border-color 0.4s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.amanah-step-card.is-green .amanah-step-card__icon {
+		border-color: rgba(155, 224, 143, 0.25);
+		box-shadow: 0 20px 40px -18px rgba(46, 162, 42, 0.8);
+	}
+
+	.amanah-step-card__icon-tile {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		border-radius: 0.8rem;
+		background:
+			radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.35), transparent 55%),
+			linear-gradient(145deg, #9466e6 0%, #511F9F 55%, #3A1575 100%);
+		box-shadow:
+			inset 0 1px 1px rgba(255, 255, 255, 0.45),
+			inset 0 -6px 12px rgba(27, 11, 58, 0.35);
+		color: #ffffff;
+		font-size: 1rem;
+		text-shadow: 0 2px 6px rgba(27, 11, 58, 0.35);
+	}
+
+	.amanah-step-card.is-green .amanah-step-card__icon-tile {
+		background:
+			radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.4), transparent 55%),
+			linear-gradient(145deg, #5fd35a 0%, #2EA22A 55%, #1E7A1B 100%);
+		box-shadow:
+			inset 0 1px 1px rgba(255, 255, 255, 0.5),
+			inset 0 -6px 12px rgba(18, 77, 17, 0.4);
+		text-shadow: 0 2px 6px rgba(18, 77, 17, 0.4);
+	}
+
+	/* Light sweep across the tile on hover. */
+	.amanah-step-card__icon-tile::after {
+		position: absolute;
+		inset: -50% auto -50% -60%;
+		width: 40%;
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+		content: "";
+		transform: rotate(20deg) translateX(0);
+		transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.amanah-step-card:hover .amanah-step-card__icon {
+		border-color: rgba(201, 182, 240, 0.45);
+		transform: translateY(-3px);
+	}
+
+	.amanah-step-card.is-green:hover .amanah-step-card__icon {
+		border-color: rgba(155, 224, 143, 0.5);
+	}
+
+	.amanah-step-card:hover .amanah-step-card__icon-tile::after {
+		transform: rotate(20deg) translateX(520%);
+	}
+
+	.amanah-step-card__next {
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 2rem;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		border-radius: 999px;
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 0.65rem;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.amanah-step-card,
+		.amanah-step-card__icon,
+		.amanah-step-card__icon-tile::after {
+			transition: none;
+		}
 	}
 
 	/* Audience */

@@ -68,7 +68,12 @@ $services_list    = array_values( amanahcareservices_get_services() );
 							</span>
 							<span class="font-display text-5xl text-white/25"><?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
 						</div>
-						<h2 id="<?php echo esc_attr( $service['slug'] ); ?>-title" class="relative mt-12 text-2xl font-extrabold leading-tight sm:text-3xl"><?php echo esc_html( $service['title'] ); ?></h2>
+						<?php if ( ! empty( $service['code'] ) ) : ?>
+							<p class="relative mt-10 inline-flex w-fit items-center rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.16em] text-white/90">
+								<?php echo esc_html( sprintf( /* translators: %s: NDIS registration group code. */ __( 'NDIS registration group %s', 'amanahcareservices' ), $service['code'] ) ); ?>
+							</p>
+						<?php endif; ?>
+						<h2 id="<?php echo esc_attr( $service['slug'] ); ?>-title" class="relative <?php echo empty( $service['code'] ) ? 'mt-12' : 'mt-4'; ?> text-2xl font-extrabold leading-tight sm:text-3xl"><?php echo esc_html( $service['title'] ); ?></h2>
 					</div>
 
 					<div class="p-8 sm:p-10 lg:col-span-8 lg:p-12 <?php echo $is_green ? 'lg:order-1' : ''; ?>">

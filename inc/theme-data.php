@@ -168,59 +168,98 @@ function amanahcareservices_get_logo_url( $variant = 'horizontal' ) {
 }
 
 /**
- * Services offered, used by the homepage, footer and menus.
+ * Services offered (NDIS registration groups), used by the homepage, footer and menus.
+ *
+ * Each service can show a photo: set one in Customizer > Theme Options > Service Images,
+ * or drop a file named assets/images/services/<slug>.jpg (or .webp/.png) into the theme.
  *
  * @return array Keyed by slug.
  */
 function amanahcareservices_get_services() {
 	$services = array(
-		'personal-care'            => array(
+		'accommodation-tenancy'              => array(
+			'code'        => '0101',
+			'title'       => 'Accommodation & Tenancy',
+			'description' => 'Help finding and keeping a home that suits you, from searching and applying for rentals to understanding your lease and tenancy responsibilities.',
+			'icon'        => 'fa-house-chimney',
+			'includes'    => array( 'Searching for suitable housing', 'Rental applications and paperwork', 'Understanding tenancy rights and responsibilities', 'Support to maintain your tenancy' ),
+		),
+		'employment-support'                 => array(
+			'code'        => '0102',
+			'title'       => 'Finding & Keeping a Job',
+			'description' => 'Support to get ready for work, find a job that fits your goals and keep it, with practical help that builds your confidence at work.',
+			'icon'        => 'fa-briefcase',
+			'includes'    => array( 'Job readiness and résumé help', 'Interview preparation', 'Travel and workplace routines', 'Support to keep your job' ),
+		),
+		'life-stage-transition'              => array(
+			'code'        => '0106',
+			'title'       => 'Life Stage & Transition Support',
+			'description' => 'Support through big life changes, like leaving school or moving house, including help to plan, coordinate and manage your supports.',
+			'icon'        => 'fa-route',
+			'includes'    => array( 'Planning for major life changes', 'Coordinating your supports', 'Linking with community and mainstream services', 'Building skills to manage your plan' ),
+		),
+		'personal-care'                      => array(
+			'code'        => '0107',
 			'title'       => 'Personal Care',
 			'description' => 'Respectful help with showering, dressing, grooming and daily routines, delivered at your pace and with your dignity at the centre.',
 			'icon'        => 'fa-hand-holding-heart',
 			'includes'    => array( 'Showering, bathing and toileting', 'Dressing and grooming', 'Medication prompts', 'Mealtime assistance' ),
 		),
-		'daily-living-support'     => array(
-			'title'       => 'Daily Living Support',
-			'description' => 'Practical support with everyday tasks at home so you can keep the routines, independence and lifestyle that matter to you.',
-			'icon'        => 'fa-kitchen-set',
-			'includes'    => array( 'Morning and evening routines', 'Meal planning and preparation', 'Managing appointments', 'Support to live independently' ),
+		'transport-assistance'               => array(
+			'code'        => '0108',
+			'title'       => 'Travel & Transport',
+			'description' => 'Safe, reliable support to get to appointments, work, study, shopping and the activities you enjoy.',
+			'icon'        => 'fa-car-side',
+			'includes'    => array( 'Medical and therapy appointments', 'Shopping and errands', 'Work, school or day programs', 'Social and community activities' ),
 		),
-		'community-participation'  => array(
-			'title'       => 'Community Participation',
-			'description' => 'Get out, connect and take part. We support social outings, hobbies, appointments and building connections in your community.',
-			'icon'        => 'fa-people-group',
-			'includes'    => array( 'Social outings and events', 'Hobbies, sport and recreation', 'Volunteering, study and work', 'Building friendships' ),
+		'daily-tasks-shared-living'          => array(
+			'code'        => '0115',
+			'title'       => 'Daily Tasks & Shared Living',
+			'description' => 'Support with daily tasks in a shared home, helping you live as independently as possible alongside your housemates.',
+			'icon'        => 'fa-people-roof',
+			'includes'    => array( 'Help with daily routines', 'Sharing household responsibilities', 'Building independent living skills', 'Support for a happy shared home' ),
 		),
-		'household-tasks'          => array(
-			'title'       => 'Household Tasks',
-			'description' => 'Help with cleaning, laundry, meal preparation and keeping your home safe, comfortable and running smoothly.',
-			'icon'        => 'fa-broom',
-			'includes'    => array( 'General cleaning', 'Laundry and linen', 'Grocery shopping', 'Light garden and home upkeep' ),
+		'innovative-community-participation' => array(
+			'code'        => '0116',
+			'title'       => 'Innovative Community Participation',
+			'description' => 'Creative, goal-focused activities that help you try new things, build skills and connect with mainstream community settings.',
+			'icon'        => 'fa-lightbulb',
+			'includes'    => array( 'New and mainstream community activities', 'Skill-building through creative programs', 'Pathways into clubs and groups', 'Activities tailored to your interests' ),
 		),
-		'life-skills-development'  => array(
+		'life-skills-development'            => array(
+			'code'        => '0117',
 			'title'       => 'Life Skills Development',
 			'description' => 'Build confidence with budgeting, cooking, travel and everyday skills that help you do more for yourself.',
 			'icon'        => 'fa-seedling',
 			'includes'    => array( 'Budgeting and money skills', 'Cooking and nutrition', 'Using public transport', 'Confidence and decision-making' ),
 		),
-		'transport-assistance'     => array(
-			'title'       => 'Transport Assistance',
-			'description' => 'Safe, reliable support to get to appointments, work, study, shopping and the activities you enjoy.',
-			'icon'        => 'fa-car-side',
-			'includes'    => array( 'Medical and therapy appointments', 'Shopping and errands', 'Work, school or day programs', 'Social and community activities' ),
+		'household-tasks'                    => array(
+			'code'        => '0120',
+			'title'       => 'Household Tasks',
+			'description' => 'Help with cleaning, laundry, meal preparation and keeping your home safe, comfortable and running smoothly.',
+			'icon'        => 'fa-broom',
+			'includes'    => array( 'General cleaning', 'Laundry and linen', 'Grocery shopping', 'Light garden and home upkeep' ),
 		),
-		'respite-care'             => array(
-			'title'       => 'Respite Care',
-			'description' => 'Short-term support that gives families and carers time to rest, while your loved one is cared for by someone you trust.',
-			'icon'        => 'fa-mug-hot',
-			'includes'    => array( 'In-home respite', 'Community-based respite', 'Planned or short-notice breaks', 'Support for family carers' ),
+		'community-participation'            => array(
+			'code'        => '0125',
+			'title'       => 'Community Participation',
+			'description' => 'Get out, connect and take part. We support social outings, hobbies and building connections in your community.',
+			'icon'        => 'fa-people-group',
+			'includes'    => array( 'Social outings and events', 'Hobbies, sport and recreation', 'Volunteering, study and courses', 'Building friendships' ),
 		),
-		'in-home-support'          => array(
-			'title'       => 'In-Home Support',
-			'description' => 'Consistent, familiar support workers who come to you, helping you stay safe and supported in your own home.',
-			'icon'        => 'fa-house-user',
-			'includes'    => array( 'Regular in-home visits', 'Companionship and check-ins', 'Safety and wellbeing support', 'Help staying connected to family' ),
+		'specialised-supported-employment'   => array(
+			'code'        => '0133',
+			'title'       => 'Specialised Supported Employment',
+			'description' => 'Work in a supported setting with ongoing help on the job, so you can build skills, earn and grow your confidence.',
+			'icon'        => 'fa-screwdriver-wrench',
+			'includes'    => array( 'Supported work environments', 'Ongoing on-the-job assistance', 'Workplace skills training', 'Help building work confidence' ),
+		),
+		'group-centre-activities'            => array(
+			'code'        => '0136',
+			'title'       => 'Group & Centre Activities',
+			'description' => 'Enjoy social, recreational and skill-building activities in a group or centre, with support to join in and make friends.',
+			'icon'        => 'fa-puzzle-piece',
+			'includes'    => array( 'Group social and recreational programs', 'Centre-based skill-building', 'Making friends and connections', 'Structured activities with support' ),
 		),
 	);
 
@@ -232,10 +271,38 @@ function amanahcareservices_get_services() {
 	$services = apply_filters( 'amanahcareservices_services', $services );
 
 	foreach ( $services as $slug => $service ) {
-		$services[ $slug ]['slug'] = $slug;
+		$services[ $slug ]['slug']  = $slug;
 		// All services live on the single Services page; each has its own anchor.
-		$services[ $slug ]['url']  = home_url( '/services/#' . $slug );
+		$services[ $slug ]['url']   = home_url( '/services/#' . $slug );
+		$services[ $slug ]['image'] = amanahcareservices_get_service_image( $slug );
 	}
 
 	return $services;
+}
+
+/**
+ * Image URL for a service: Customizer image first, then a bundled theme file.
+ *
+ * @param string $slug Service slug.
+ * @param string $size Image size for Customizer images.
+ * @return string Image URL, or an empty string when none is set.
+ */
+function amanahcareservices_get_service_image( $slug, $size = 'large' ) {
+	$image_id = absint( get_theme_mod( 'amanahcareservices_service_image_' . $slug, 0 ) );
+
+	if ( $image_id ) {
+		$image = wp_get_attachment_image_src( $image_id, $size );
+		if ( $image ) {
+			return $image[0];
+		}
+	}
+
+	foreach ( array( 'jpg', 'webp', 'png' ) as $ext ) {
+		$file = 'assets/images/services/' . $slug . '.' . $ext;
+		if ( file_exists( get_template_directory() . '/' . $file ) ) {
+			return get_template_directory_uri() . '/' . $file;
+		}
+	}
+
+	return '';
 }

@@ -156,6 +156,20 @@ function amanahcareservices_scripts() {
 		true
 	);
 
+	if ( is_front_page() || is_page_template( 'page-home.php' ) ) {
+		wp_enqueue_style( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11' );
+		wp_enqueue_script( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11', true );
+
+		$slider_script = get_template_directory() . '/js/services-slider.js';
+		wp_enqueue_script(
+			'amanahcareservices-services-slider',
+			get_template_directory_uri() . '/js/services-slider.js',
+			array( 'swiper' ),
+			file_exists( $slider_script ) ? (string) filemtime( $slider_script ) : _S_VERSION,
+			true
+		);
+	}
+
 	if ( is_page_template( 'page-contact-us.php' ) || is_page( 'contact-us' ) ) {
 		$contact_script = get_template_directory() . '/js/contact-form.js';
 		wp_enqueue_script(

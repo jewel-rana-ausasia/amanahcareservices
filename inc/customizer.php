@@ -230,6 +230,41 @@ function amanahcareservices_customize_register( $wp_customize ) {
 		}
 	}
 
+	/*
+	 * Service images (homepage slider).
+	 */
+	$wp_customize->add_section(
+		'amanahcareservices_service_images',
+		array(
+			'title'       => esc_html__( 'Service Images', 'amanahcareservices' ),
+			'description' => esc_html__( 'Photos for the homepage services slider. Landscape images (min. 800 × 600px) work best. Without an image, a branded panel with the service icon is shown.', 'amanahcareservices' ),
+			'panel'       => 'amanahcareservices_options',
+		)
+	);
+
+	foreach ( amanahcareservices_get_services() as $slug => $service ) {
+		$setting_id = 'amanahcareservices_service_image_' . $slug;
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => '',
+				'sanitize_callback' => 'absint',
+			)
+		);
+		$wp_customize->add_control(
+			new WP_Customize_Media_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					/* translators: 1: NDIS registration group code, 2: service name. */
+					'label'     => sprintf( esc_html__( '%1$s – %2$s', 'amanahcareservices' ), $service['code'], $service['title'] ),
+					'section'   => 'amanahcareservices_service_images',
+					'mime_type' => 'image',
+				)
+			)
+		);
+	}
+
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial(
 			'blogname',
