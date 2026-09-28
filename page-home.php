@@ -16,10 +16,10 @@ $home_services = array_values( amanahcareservices_get_services() );
 $home_about_id = absint( get_theme_mod( 'amanahcareservices_about_image', 0 ) );
 
 $home_values = array(
-	array( 'icon' => 'fa-handshake-simple', 'title' => 'Trust & integrity', 'text' => 'We do what we say, every time.' ),
-	array( 'icon' => 'fa-hands-holding-child', 'title' => 'Dignity & respect', 'text' => 'Your privacy and choices come first.' ),
-	array( 'icon' => 'fa-compass', 'title' => 'Person-centred', 'text' => 'Support shaped around your goals.' ),
-	array( 'icon' => 'fa-shield-heart', 'title' => 'Safe & reliable', 'text' => 'Consistent care you can count on.' ),
+	array( 'icon' => 'fa-handshake-simple', 'title' => 'Trust & integrity', 'text' => 'We do what we say, every time, and treat your home and your trust with genuine care.' ),
+	array( 'icon' => 'fa-hands-holding-child', 'title' => 'Dignity & respect', 'text' => 'Your privacy, choices and independence come first in every visit and conversation.' ),
+	array( 'icon' => 'fa-compass', 'title' => 'Person-centred', 'text' => 'Support shaped around your goals, routines and the life you want to live.' ),
+	array( 'icon' => 'fa-shield-heart', 'title' => 'Safe & reliable', 'text' => 'Consistent, familiar support workers you can count on, week after week.' ),
 );
 
 $home_steps = array(
@@ -88,18 +88,21 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	<!-- =========================================================
 	     Values strip
 	     ========================================================= -->
-	<section class="relative bg-white px-5 pt-14 md:px-8 lg:px-12 lg:pt-16" aria-label="<?php esc_attr_e( 'Our values', 'amanahcareservices' ); ?>">
+	<section class="amanah-values relative isolate px-5 py-16 md:px-8 lg:px-12 lg:py-20" aria-label="<?php esc_attr_e( 'Our values', 'amanahcareservices' ); ?>">
 		<div class="container mx-auto">
-			<ul class="grid overflow-hidden rounded-[2rem] border border-[#ece6f6] bg-white shadow-[0_30px_70px_-20px_rgba(27,11,58,0.18)] sm:grid-cols-2 lg:grid-cols-4" data-reveal>
+			<ul class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">
 				<?php foreach ( $home_values as $index => $value ) : ?>
-					<li class="group flex items-start gap-4 border-[#f0ebf8] p-6 transition-colors hover:bg-soft/60 sm:p-7 <?php echo $index > 0 ? 'border-t sm:border-t-0' : ''; ?> <?php echo 1 === $index % 2 ? 'sm:border-l' : ''; ?> <?php echo $index > 1 ? 'sm:border-t lg:border-t-0' : ''; ?> <?php echo 2 === $index ? 'lg:border-l' : ''; ?>">
-						<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl <?php echo 0 === $index % 2 ? 'bg-soft text-primary' : 'bg-mint text-secondaryDark'; ?> transition duration-300 group-hover:scale-110">
-							<i class="fa-solid <?php echo esc_attr( $value['icon'] ); ?> text-lg" aria-hidden="true"></i>
-						</span>
-						<span>
-							<span class="block text-base font-extrabold text-ink"><?php echo esc_html( $value['title'] ); ?></span>
-							<span class="mt-1 block text-sm leading-6 text-body"><?php echo esc_html( $value['text'] ); ?></span>
-						</span>
+					<?php $is_green = 1 === $index % 2; ?>
+					<li class="amanah-value-card group relative flex min-h-[220px] flex-col overflow-hidden rounded-none border border-[#ece6f5] bg-white p-8 shadow-[0_18px_45px_-28px_rgba(27,11,58,0.35)] ring-0 ring-primary/[0.05] transition duration-500 hover:-translate-y-2 hover:border-[#d8cbee] hover:ring-[6px] hover:shadow-[0_34px_70px_-30px_rgba(81,31,159,0.45)]" data-reveal>
+						<span class="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full <?php echo $is_green ? 'bg-mint' : 'bg-soft'; ?> opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true"></span>
+
+						<div class="relative flex items-center gap-4">
+							<span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-md bg-gradient-to-br <?php echo $is_green ? 'from-[#3cb838] to-secondaryDark shadow-[0_14px_30px_-10px_rgba(46,162,42,0.6)]' : 'from-[#6d2fc6] to-primaryDark shadow-[0_14px_30px_-10px_rgba(81,31,159,0.6)]'; ?> text-white transition duration-500 group-hover:-rotate-6 group-hover:scale-105">
+								<i class="fa-solid <?php echo esc_attr( $value['icon'] ); ?> text-xl" aria-hidden="true"></i>
+							</span>
+							<h3 class="text-lg font-extrabold leading-tight tracking-[-0.01em] text-ink"><?php echo esc_html( $value['title'] ); ?></h3>
+						</div>
+						<p class="relative mt-6 flex-1 text-[15px] leading-7 text-body"><?php echo esc_html( $value['text'] ); ?></p>
 					</li>
 				<?php endforeach; ?>
 			</ul>
@@ -107,76 +110,74 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	</section>
 
 	<!-- =========================================================
-	     About / meaning of Amanah
+	     About
 	     ========================================================= -->
-	<section id="about" class="relative isolate overflow-hidden py-20 sm:py-24 lg:py-32" aria-labelledby="home-about-title">
-		<span class="pointer-events-none absolute -left-40 top-1/3 -z-10 h-[30rem] w-[30rem] rounded-full bg-soft blur-3xl" aria-hidden="true"></span>
+	<?php
+	$home_about_image_url = $home_about_id ? wp_get_attachment_image_url( $home_about_id, 'large' ) : '';
+	if ( ! $home_about_image_url ) {
+		$home_about_file      = file_exists( get_template_directory() . '/assets/images/about/amanah-about.jpg' ) ? 'about/amanah-about.jpg' : 'hero/amanah-hero-bg.jpg';
+		$home_about_image_url = get_template_directory_uri() . '/assets/images/' . $home_about_file;
+	}
+
+	$home_about_points = array(
+		array( 'icon' => 'fa-ear-listen', 'title' => 'We listen first', 'text' => 'Your voice guides every decision about your support.' ),
+		array( 'icon' => 'fa-seedling', 'title' => 'We build independence', 'text' => 'Support that grows your confidence and skills over time.' ),
+		array( 'icon' => 'fa-earth-oceania', 'title' => 'We respect your culture', 'text' => 'Your faith, language and family values are part of your care.' ),
+	);
+	?>
+	<section id="about" class="relative isolate overflow-hidden bg-white py-20 sm:py-24 lg:py-28" aria-labelledby="home-about-title">
 		<div class="container mx-auto px-5 md:px-8 lg:px-12">
-			<div class="grid items-center gap-16 lg:grid-cols-12 lg:gap-12 xl:gap-20">
-				<div class="relative lg:col-span-5" data-reveal>
-					<span class="absolute -left-4 -top-4 h-28 w-28 rounded-[2rem] bg-secondary/15" aria-hidden="true"></span>
-					<span class="absolute -bottom-5 -right-5 h-40 w-40 rounded-full border-[18px] border-soft" aria-hidden="true"></span>
+			<div class="grid items-center gap-16 lg:grid-cols-12 lg:gap-14 xl:gap-20">
 
-					<?php if ( $home_about_id ) : ?>
-						<div class="relative overflow-hidden rounded-[2rem_2rem_6rem_2rem] shadow-[0_35px_80px_-25px_rgba(27,11,58,0.4)]">
-							<?php echo wp_get_attachment_image( $home_about_id, 'large', false, array( 'class' => 'h-[460px] w-full object-cover sm:h-[540px]', 'loading' => 'lazy' ) ); ?>
-						</div>
-					<?php else : ?>
-						<div class="amanah-meaning-card relative overflow-hidden rounded-[2rem_2rem_6rem_2rem] p-9 text-white shadow-[0_35px_80px_-25px_rgba(27,11,58,0.55)] sm:p-12">
-							<span class="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full border-[36px] border-white/[0.06]" aria-hidden="true"></span>
-							<p class="text-[11px] font-extrabold uppercase tracking-[0.24em] text-leaf"><?php esc_html_e( 'The meaning behind our name', 'amanahcareservices' ); ?></p>
-							<p class="mt-8 font-display text-6xl leading-none sm:text-7xl" lang="ar" dir="rtl">أمانة</p>
-							<p class="mt-6 font-display text-4xl tracking-wide sm:text-5xl"><?php esc_html_e( 'Amanah', 'amanahcareservices' ); ?></p>
-							<p class="mt-2 text-sm font-semibold italic text-white/70"><?php esc_html_e( 'noun · /a·maa·nah/', 'amanahcareservices' ); ?></p>
-							<ol class="mt-8 space-y-4 border-t border-white/15 pt-8 text-[15px] leading-7 text-white/85">
-								<li class="flex gap-4"><span class="font-display text-leaf">1.</span><?php esc_html_e( 'Trust placed in someone’s care.', 'amanahcareservices' ); ?></li>
-								<li class="flex gap-4"><span class="font-display text-leaf">2.</span><?php esc_html_e( 'Honesty, integrity and faithfulness.', 'amanahcareservices' ); ?></li>
-								<li class="flex gap-4"><span class="font-display text-leaf">3.</span><?php esc_html_e( 'A responsibility we hold with respect.', 'amanahcareservices' ); ?></li>
-							</ol>
-						</div>
-					<?php endif; ?>
+				<!-- Image -->
+				<div class="relative lg:col-span-6" data-reveal>
+					<span class="absolute -left-4 -top-4 h-full w-full border-2 border-primary/15 sm:-left-5 sm:-top-5" aria-hidden="true"></span>
+					<span class="absolute -bottom-5 -right-5 h-32 w-32 bg-secondary/15 sm:h-40 sm:w-40" aria-hidden="true"></span>
 
-					<div class="absolute -bottom-8 left-6 flex items-center gap-3 rounded-2xl bg-white p-4 pr-6 shadow-[0_20px_50px_rgba(27,11,58,0.18)] sm:left-10">
-						<span class="flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-white"><i class="fa-solid fa-quote-left" aria-hidden="true"></i></span>
-						<span class="text-sm font-extrabold leading-snug text-ink"><?php esc_html_e( 'Quality care you can trust.', 'amanahcareservices' ); ?></span>
+					<div class="relative overflow-hidden shadow-[0_40px_80px_-35px_rgba(27,11,58,0.45)]">
+						<img
+							src="<?php echo esc_url( $home_about_image_url ); ?>"
+							alt="<?php esc_attr_e( 'An Amanah Care Services support worker sharing a warm moment with a participant', 'amanahcareservices' ); ?>"
+							class="h-[420px] w-full object-cover object-[82%_center] transition duration-1000 hover:scale-[1.03] sm:h-[520px] lg:h-[600px]"
+							loading="lazy"
+							decoding="async">
+						<span class="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" aria-hidden="true"></span>
 					</div>
 				</div>
 
-				<div class="lg:col-span-7" data-reveal>
+				<!-- Content -->
+				<div class="lg:col-span-6" data-reveal>
 					<p class="amanah-eyebrow"><?php esc_html_e( 'About Amanah Care Services', 'amanahcareservices' ); ?></p>
-					<h2 id="home-about-title" class="mt-5 max-w-2xl text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] text-ink md:text-5xl">
+					<h2 id="home-about-title" class="mt-5 text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] text-ink md:text-[2.75rem]">
 						<?php esc_html_e( 'A name that is also', 'amanahcareservices' ); ?>
 						<span class="text-primary"><?php esc_html_e( 'our promise to you.', 'amanahcareservices' ); ?></span>
 					</h2>
-					<p class="mt-7 max-w-2xl text-lg leading-8 text-body">
+					<p class="mt-6 text-lg leading-8 text-body">
 						<?php esc_html_e( 'When you welcome us into your home and your life, you are trusting us with something precious. We take that seriously. Our team listens first, respects your choices and shows up with warmth, patience and consistency.', 'amanahcareservices' ); ?>
 					</p>
-					<p class="mt-5 max-w-2xl leading-8 text-body">
-						<?php esc_html_e( 'Whether you need a little help around the house or daily support to live independently, we tailor every service around your goals, your culture and the way you like to live.', 'amanahcareservices' ); ?>
-					</p>
 
-					<div class="mt-10 grid gap-5 sm:grid-cols-2">
-						<div class="group rounded-3xl border border-[#ece6f6] bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_24px_50px_-20px_rgba(81,31,159,0.3)]">
-							<span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-soft text-primary transition group-hover:bg-primary group-hover:text-white"><i class="fa-solid fa-ear-listen" aria-hidden="true"></i></span>
-							<h3 class="mt-5 text-lg font-extrabold text-ink"><?php esc_html_e( 'We listen first', 'amanahcareservices' ); ?></h3>
-							<p class="mt-2 text-sm leading-6 text-body"><?php esc_html_e( 'Your voice guides every decision about your support.', 'amanahcareservices' ); ?></p>
-						</div>
-						<div class="group rounded-3xl border border-[#ece6f6] bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_24px_50px_-20px_rgba(46,162,42,0.3)]">
-							<span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-mint text-secondaryDark transition group-hover:bg-secondary group-hover:text-white"><i class="fa-solid fa-seedling" aria-hidden="true"></i></span>
-							<h3 class="mt-5 text-lg font-extrabold text-ink"><?php esc_html_e( 'We build independence', 'amanahcareservices' ); ?></h3>
-							<p class="mt-2 text-sm leading-6 text-body"><?php esc_html_e( 'Support that grows your confidence and skills over time.', 'amanahcareservices' ); ?></p>
-						</div>
-					</div>
+					<ul class="mt-9 divide-y divide-[#efe9f7] border-y border-[#efe9f7]">
+						<?php foreach ( $home_about_points as $index => $point ) : ?>
+							<li class="group flex items-start gap-5 py-5">
+								<span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-md <?php echo 1 === $index % 2 ? 'bg-mint text-secondaryDark group-hover:bg-secondary' : 'bg-soft text-primary group-hover:bg-primary'; ?> transition duration-300 group-hover:text-white">
+									<i class="fa-solid <?php echo esc_attr( $point['icon'] ); ?>" aria-hidden="true"></i>
+								</span>
+								<span>
+									<span class="block text-base font-extrabold text-ink"><?php echo esc_html( $point['title'] ); ?></span>
+									<span class="mt-1 block text-[15px] leading-7 text-body"><?php echo esc_html( $point['text'] ); ?></span>
+								</span>
+							</li>
+						<?php endforeach; ?>
+					</ul>
 
-					<div class="mt-10 flex flex-wrap items-center gap-6">
-						<a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>" class="group inline-flex items-center gap-3 text-sm font-extrabold text-primary">
-							<?php esc_html_e( 'Learn more about us', 'amanahcareservices' ); ?>
-							<span class="flex h-10 w-10 items-center justify-center rounded-full bg-soft transition group-hover:translate-x-1 group-hover:bg-primary group-hover:text-white">
-								<i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
-							</span>
+					<div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
+						<a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>" class="group relative inline-flex min-h-[50px] items-center justify-center overflow-hidden rounded-md bg-primary px-6 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white shadow-[0_14px_32px_rgba(81,31,159,.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-primaryDark">
+							<span><?php esc_html_e( 'Learn more about us', 'amanahcareservices' ); ?></span>
+							<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow-right text-[12px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i></span>
+							<span class="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-secondary transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
 						</a>
 						<?php if ( $home_contact['ndis_number'] ) : ?>
-							<span class="flex items-center gap-3 border-l border-[#e6def5] pl-6 text-sm font-bold text-ink">
+							<span class="flex items-center gap-3 text-sm font-bold text-ink">
 								<i class="fa-solid fa-shield-heart text-2xl text-secondary" aria-hidden="true"></i>
 								<span>
 									<?php esc_html_e( 'Registered NDIS Provider', 'amanahcareservices' ); ?>
@@ -186,6 +187,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 						<?php endif; ?>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</section>
@@ -491,13 +493,11 @@ for ( $i = 1; $i <= 3; $i++ ) {
 </main>
 
 <style>
-
-	/* About */
-	.amanah-meaning-card {
-		background:
-			radial-gradient(circle at 90% 100%, rgba(46, 162, 42, 0.35), transparent 40%),
-			linear-gradient(155deg, #3a1575 0%, #1b0b3a 100%);
+	/* Values */
+	.amanah-values {
+		background: linear-gradient(180deg, #ffffff 0%, #fbf9fe 100%);
 	}
+
 
 	/* Services */
 	.amanah-services {

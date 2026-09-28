@@ -46,6 +46,9 @@ function amanahcareservices_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
+	// Inner-page banner: 1920 x 500, hard-cropped.
+	add_image_size( 'amanahcareservices-banner', 1920, 500, true );
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
@@ -140,7 +143,8 @@ add_action( 'widgets_init', 'amanahcareservices_widgets_init' );
  * Enqueue scripts and styles.
  */
 function amanahcareservices_scripts() {
-	wp_enqueue_style( 'amanahcareservices-style', get_stylesheet_uri(), array(), _S_VERSION );
+	$style_file = get_template_directory() . '/style.css';
+	wp_enqueue_style( 'amanahcareservices-style', get_stylesheet_uri(), array(), file_exists( $style_file ) ? (string) filemtime( $style_file ) : _S_VERSION );
 	wp_style_add_data( 'amanahcareservices-style', 'rtl', 'replace' );
 
 	$site_script = get_template_directory() . '/js/site.js';
@@ -151,6 +155,17 @@ function amanahcareservices_scripts() {
 		file_exists( $site_script ) ? (string) filemtime( $site_script ) : _S_VERSION,
 		true
 	);
+
+	if ( is_page_template( 'page-contact-us.php' ) || is_page( 'contact-us' ) ) {
+		$contact_script = get_template_directory() . '/js/contact-form.js';
+		wp_enqueue_script(
+			'amanahcareservices-contact-form',
+			get_template_directory_uri() . '/js/contact-form.js',
+			array(),
+			file_exists( $contact_script ) ? (string) filemtime( $contact_script ) : _S_VERSION,
+			true
+		);
+	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -185,6 +200,11 @@ require get_template_directory() . '/inc/theme-data.php';
  * Built-in Contact Us form handler.
  */
 require get_template_directory() . '/inc/contact-form.php';
+
+/**
+ * Per-page banner image meta box.
+ */
+require get_template_directory() . '/inc/page-banner.php';
 
 /**
  * Customizer additions.

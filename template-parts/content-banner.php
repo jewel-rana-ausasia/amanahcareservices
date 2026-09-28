@@ -6,9 +6,11 @@
  *     'eyebrow'     => 'Optional small label',
  *     'title'       => 'Defaults to the page title',
  *     'description' => 'Defaults to the page excerpt',
+ *     'container'   => 'Width class for the inner wrapper, e.g. max-w-7xl',
  * ) );
  *
- * The page's featured image, when set, is used as a subtle background photo.
+ * The background photo comes from the "Page Banner Image" box in the page
+ * editor (see inc/page-banner.php), falling back to the featured image.
  *
  * @package amanahcareservices
  */
@@ -19,6 +21,7 @@ $banner_args = wp_parse_args(
 		'eyebrow'     => get_bloginfo( 'name' ),
 		'title'       => '',
 		'description' => '',
+		'container'   => 'container',
 	)
 );
 
@@ -39,27 +42,24 @@ if ( '' === $banner_args['description'] && is_singular() && has_excerpt() ) {
 	$banner_args['description'] = get_the_excerpt();
 }
 
-$banner_image_id = is_singular() ? get_post_thumbnail_id() : 0;
+$banner_image_id = is_singular() ? amanahcareservices_get_banner_image_id() : 0;
 $banner_parent   = is_page() ? wp_get_post_parent_id( get_the_ID() ) : 0;
 ?>
 
-<section class="amanah-banner relative isolate overflow-hidden text-white" aria-labelledby="page-banner-title">
+<section class="amanah-banner relative isolate flex items-center overflow-hidden text-white lg:min-h-[500px]" aria-labelledby="page-banner-title">
 	<?php if ( $banner_image_id ) : ?>
 		<div class="absolute inset-0 -z-20">
-			<?php echo wp_get_attachment_image( $banner_image_id, 'full', false, array( 'class' => 'h-full w-full object-cover', 'loading' => 'eager', 'alt' => '' ) ); ?>
+			<?php echo wp_get_attachment_image( $banner_image_id, 'amanahcareservices-banner', false, array( 'class' => 'h-full w-full object-cover object-center', 'sizes' => '100vw', 'loading' => 'eager', 'alt' => '' ) ); ?>
 		</div>
-		<span class="absolute inset-0 -z-10 bg-gradient-to-r from-ink/95 via-primaryDark/85 to-primary/50" aria-hidden="true"></span>
+		<span class="absolute inset-0 -z-10 bg-gradient-to-r from-ink/75 via-primaryDark/40 to-transparent" aria-hidden="true"></span>
 	<?php endif; ?>
 
 	<div class="amanah-banner-art" aria-hidden="true">
-		<span class="amanah-banner-art__grid"></span>
 		<span class="amanah-banner-art__glow"></span>
-		<span class="amanah-banner-art__ring amanah-banner-art__ring--one"></span>
-		<span class="amanah-banner-art__ring amanah-banner-art__ring--two"></span>
 		<img class="amanah-banner-art__mark" src="<?php echo esc_url( amanahcareservices_get_logo_url( 'mark' ) ); ?>" alt="" width="343" height="363">
 	</div>
 
-	<div class="container relative mx-auto px-5 pb-24 pt-16 md:px-8 lg:px-12 lg:pb-28 lg:pt-24">
+	<div class="<?php echo esc_attr( $banner_args['container'] ); ?> relative mx-auto w-full px-5 pb-24 pt-16 md:px-8 lg:px-12 lg:pb-24 lg:pt-16">
 		<nav class="mb-7" aria-label="<?php esc_attr_e( 'Breadcrumb', 'amanahcareservices' ); ?>">
 			<ol class="inline-flex flex-wrap items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 text-xs font-semibold text-white/75 backdrop-blur">
 				<li>
