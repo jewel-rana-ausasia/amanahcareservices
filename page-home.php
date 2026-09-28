@@ -33,9 +33,7 @@ $home_reasons = array(
 	array( 'icon' => 'fa-user-group', 'title' => 'Familiar faces', 'text' => 'We aim to keep the same support workers with you, so trust can grow over time.' ),
 	array( 'icon' => 'fa-comments', 'title' => 'Clear communication', 'text' => 'Honest updates and a team that picks up the phone when you need us.' ),
 	array( 'icon' => 'fa-earth-oceania', 'title' => 'Culturally respectful', 'text' => 'We respect your faith, culture, language and family values in every visit.' ),
-	array( 'icon' => 'fa-calendar-check', 'title' => 'Flexible scheduling', 'text' => 'Support arranged around your routine, not the other way around.' ),
 	array( 'icon' => 'fa-people-roof', 'title' => 'Family involved', 'text' => 'With your consent, we work closely with family, carers and your support network.' ),
-	array( 'icon' => 'fa-award', 'title' => 'Carefully selected team', 'text' => 'Caring, trained support workers who share our values of honesty and respect.' ),
 );
 
 $home_audiences = array(
@@ -345,7 +343,6 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	     Why choose us
 	     ========================================================= -->
 	<section class="relative isolate overflow-hidden bg-[#fbfafe] py-20 sm:py-24 lg:py-32" aria-labelledby="home-why-title">
-		<span class="pointer-events-none absolute -right-40 top-10 -z-10 h-[28rem] w-[28rem] rounded-full bg-mint blur-3xl" aria-hidden="true"></span>
 		<div class="container mx-auto px-5 md:px-8 lg:px-12">
 			<div class="grid gap-14 lg:grid-cols-12 lg:gap-12 xl:gap-20">
 				<div class="lg:col-span-5">
@@ -358,7 +355,6 @@ for ( $i = 1; $i <= 3; $i++ ) {
 						<p class="mt-6 text-lg leading-8 text-body"><?php esc_html_e( 'Showing up on time. Remembering how you take your tea. Asking before assuming. Great care is built on everyday moments of respect.', 'amanahcareservices' ); ?></p>
 
 						<div class="relative mt-10 overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary to-primaryDark p-8 text-white shadow-[0_30px_60px_-20px_rgba(81,31,159,0.55)]">
-							<span class="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full border-[28px] border-white/[0.07]" aria-hidden="true"></span>
 							<p class="text-[11px] font-extrabold uppercase tracking-[0.22em] text-leaf"><?php esc_html_e( 'Have a question?', 'amanahcareservices' ); ?></p>
 							<p class="mt-3 text-2xl font-extrabold leading-snug"><?php esc_html_e( 'Our friendly team is here to help.', 'amanahcareservices' ); ?></p>
 							<div class="mt-6 space-y-3 text-sm">
@@ -387,8 +383,8 @@ for ( $i = 1; $i <= 3; $i++ ) {
 					<?php foreach ( $home_reasons as $index => $reason ) : ?>
 						<div class="group relative overflow-hidden rounded-[1.75rem] border border-[#ece6f6] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-20px_rgba(27,11,58,0.2)] <?php echo 1 === $index % 2 ? 'sm:translate-y-8' : ''; ?>" data-reveal>
 							<span class="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-primary to-secondary transition-transform duration-500 group-hover:scale-x-100" aria-hidden="true"></span>
-							<span class="flex h-12 w-12 items-center justify-center rounded-2xl <?php echo in_array( $index, array( 0, 3, 4 ), true ) ? 'bg-soft text-primary' : 'bg-mint text-secondaryDark'; ?>">
-								<i class="fa-solid <?php echo esc_attr( $reason['icon'] ); ?>" aria-hidden="true"></i>
+							<span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br <?php echo in_array( $index, array( 1, 2 ), true ) ? 'from-secondary to-secondaryDark shadow-[0_14px_28px_-10px_rgba(46,162,42,0.6)]' : 'from-primary to-primaryDark shadow-[0_14px_28px_-10px_rgba(81,31,159,0.6)]'; ?> text-white transition duration-500 group-hover:-rotate-6">
+								<i class="fa-solid <?php echo esc_attr( $reason['icon'] ); ?> text-lg" aria-hidden="true"></i>
 							</span>
 							<h3 class="mt-6 text-lg font-extrabold text-ink"><?php echo esc_html( $reason['title'] ); ?></h3>
 							<p class="mt-2 text-sm leading-7 text-body"><?php echo esc_html( $reason['text'] ); ?></p>
