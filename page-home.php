@@ -255,7 +255,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 										</span>
 	
 										<h3 id="home-service-<?php echo esc_attr( $service['slug'] ); ?>" class="mt-5 text-lg font-extrabold leading-snug text-ink transition-colors group-hover:text-primary">
-											<a href="<?php echo esc_url( $service['url'] ); ?>" class="after:absolute after:inset-0 after:z-[3] after:rounded-[1.75rem] after:content-[''] focus:outline-none"><?php echo esc_html( $service['title'] ); ?></a>
+											<a href="<?php echo esc_url( $service['url'] ); ?>" class="after:absolute after:inset-0 after:z-[3] after:rounded-[1.75rem] after:content-[''] focus:outline-none"><?php echo esc_html( ! empty( $service['group'] ) ? $service['group'] : $service['title'] ); ?></a>
 										</h3>
 										<p class="mt-3 line-clamp-3 flex-1 text-sm leading-7 text-body"><?php echo esc_html( $service['description'] ); ?></p>
 	

@@ -179,6 +179,7 @@ function amanahcareservices_get_services() {
 	$services = array(
 		'accommodation-tenancy'              => array(
 			'code'        => '0101',
+			'group'       => 'Accommodation/Tenancy',
 			'title'       => 'Accommodation & Tenancy',
 			'description' => 'Help finding and keeping a home that suits you, from searching and applying for rentals to understanding your lease and tenancy responsibilities.',
 			'icon'        => 'fa-house-chimney',
@@ -186,6 +187,7 @@ function amanahcareservices_get_services() {
 		),
 		'employment-support'                 => array(
 			'code'        => '0102',
+			'group'       => 'Assist Access/Maintain Employ',
 			'title'       => 'Finding & Keeping a Job',
 			'description' => 'Support to get ready for work, find a job that fits your goals and keep it, with practical help that builds your confidence at work.',
 			'icon'        => 'fa-briefcase',
@@ -193,6 +195,7 @@ function amanahcareservices_get_services() {
 		),
 		'life-stage-transition'              => array(
 			'code'        => '0106',
+			'group'       => 'Assist-Life Stage, Transition',
 			'title'       => 'Life Stage & Transition Support',
 			'description' => 'Support through big life changes, like leaving school or moving house, including help to plan, coordinate and manage your supports.',
 			'icon'        => 'fa-route',
@@ -200,6 +203,7 @@ function amanahcareservices_get_services() {
 		),
 		'personal-care'                      => array(
 			'code'        => '0107',
+			'group'       => 'Assist-Personal Activities',
 			'title'       => 'Personal Care',
 			'description' => 'Respectful help with showering, dressing, grooming and daily routines, delivered at your pace and with your dignity at the centre.',
 			'icon'        => 'fa-hand-holding-heart',
@@ -207,6 +211,7 @@ function amanahcareservices_get_services() {
 		),
 		'transport-assistance'               => array(
 			'code'        => '0108',
+			'group'       => 'Assist-Travel/Transport',
 			'title'       => 'Travel & Transport',
 			'description' => 'Safe, reliable support to get to appointments, work, study, shopping and the activities you enjoy.',
 			'icon'        => 'fa-car-side',
@@ -214,6 +219,7 @@ function amanahcareservices_get_services() {
 		),
 		'daily-tasks-shared-living'          => array(
 			'code'        => '0115',
+			'group'       => 'Daily Tasks/Shared Living',
 			'title'       => 'Daily Tasks & Shared Living',
 			'description' => 'Support with daily tasks in a shared home, helping you live as independently as possible alongside your housemates.',
 			'icon'        => 'fa-people-roof',
@@ -221,6 +227,7 @@ function amanahcareservices_get_services() {
 		),
 		'innovative-community-participation' => array(
 			'code'        => '0116',
+			'group'       => 'Innov Community Participation',
 			'title'       => 'Innovative Community Participation',
 			'description' => 'Creative, goal-focused activities that help you try new things, build skills and connect with mainstream community settings.',
 			'icon'        => 'fa-lightbulb',
@@ -228,6 +235,7 @@ function amanahcareservices_get_services() {
 		),
 		'life-skills-development'            => array(
 			'code'        => '0117',
+			'group'       => 'Development-Life Skills',
 			'title'       => 'Life Skills Development',
 			'description' => 'Build confidence with budgeting, cooking, travel and everyday skills that help you do more for yourself.',
 			'icon'        => 'fa-seedling',
@@ -235,6 +243,7 @@ function amanahcareservices_get_services() {
 		),
 		'household-tasks'                    => array(
 			'code'        => '0120',
+			'group'       => 'Household Tasks',
 			'title'       => 'Household Tasks',
 			'description' => 'Help with cleaning, laundry, meal preparation and keeping your home safe, comfortable and running smoothly.',
 			'icon'        => 'fa-broom',
@@ -242,6 +251,7 @@ function amanahcareservices_get_services() {
 		),
 		'community-participation'            => array(
 			'code'        => '0125',
+			'group'       => 'Participate Community',
 			'title'       => 'Community Participation',
 			'description' => 'Get out, connect and take part. We support social outings, hobbies and building connections in your community.',
 			'icon'        => 'fa-people-group',
@@ -249,6 +259,7 @@ function amanahcareservices_get_services() {
 		),
 		'specialised-supported-employment'   => array(
 			'code'        => '0133',
+			'group'       => 'Spec Support Employ',
 			'title'       => 'Specialised Supported Employment',
 			'description' => 'Work in a supported setting with ongoing help on the job, so you can build skills, earn and grow your confidence.',
 			'icon'        => 'fa-screwdriver-wrench',
@@ -256,6 +267,7 @@ function amanahcareservices_get_services() {
 		),
 		'group-centre-activities'            => array(
 			'code'        => '0136',
+			'group'       => 'Group/Centre Activities',
 			'title'       => 'Group & Centre Activities',
 			'description' => 'Enjoy social, recreational and skill-building activities in a group or centre, with support to join in and make friends.',
 			'icon'        => 'fa-puzzle-piece',

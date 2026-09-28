@@ -20,13 +20,36 @@ $about_values = array(
 );
 
 $about_promises = array(
-	'Listen to you and put your goals at the centre of your support',
-	'Match you with caring workers who suit your needs and personality',
-	'Keep your information private and your home respected',
-	'Communicate clearly, on time and in plain language',
-	'Respect your culture, faith, language and family values',
-	'Review your support regularly and adapt as life changes',
-	'Welcome your feedback and act on it quickly and fairly',
+	array( 'icon' => 'fa-ear-listen', 'title' => 'We listen first', 'text' => 'Your goals sit at the centre of your support, and your voice guides every decision.' ),
+	array( 'icon' => 'fa-people-arrows', 'title' => 'The right match', 'text' => 'Caring workers who suit your needs, interests and personality.' ),
+	array( 'icon' => 'fa-user-shield', 'title' => 'Privacy & respect', 'text' => 'Your information stays private and your home is always respected.' ),
+	array( 'icon' => 'fa-hands-praying', 'title' => 'Culture & faith', 'text' => 'We honour your culture, faith, language and family values.' ),
+);
+$about_phone = amanahcareservices_get_primary_phone();
+
+$about_socials = amanahcareservices_get_social_links();
+
+$about_faqs = array(
+	array(
+		'question' => 'What does “Amanah” mean?',
+		'answer'   => 'In Arabic, “Amanah” means trust, honesty and a responsibility held with care. It is the promise behind everything we do, from the first conversation to every visit.',
+	),
+	array(
+		'question' => 'Who do you support?',
+		'answer'   => 'We provide disability and community support for NDIS participants, and we work closely with their families, carers and support coordinators so everyone feels informed and involved.',
+	),
+	array(
+		'question' => 'How do you match me with a support worker?',
+		'answer'   => 'We take time to understand your needs, interests and personality, then match you with caring workers who suit you. We aim to keep the same familiar faces with you over time.',
+	),
+	array(
+		'question' => 'What makes your support different?',
+		'answer'   => 'Your support is shaped around you, not the paperwork. We listen first, communicate in plain language and respect your culture, faith, language and family values.',
+	),
+	array(
+		'question' => 'How can I give feedback about my support?',
+		'answer'   => 'You can call, email or message us at any time. We welcome all feedback, positive or negative, and we act on it quickly and fairly.',
+	),
 );
 ?>
 
@@ -47,7 +70,7 @@ $about_promises = array(
 	<section class="relative isolate py-20 sm:py-24 lg:py-28" aria-labelledby="about-story-title">
 		<div class="container mx-auto px-5 md:px-8 lg:px-12">
 			<div class="grid items-center gap-16 lg:grid-cols-12 lg:gap-12 xl:gap-20">
-				<div class="lg:col-span-7" data-reveal>
+				<div class="lg:col-span-6" data-reveal>
 					<p class="amanah-eyebrow"><?php esc_html_e( 'Who we are', 'amanahcareservices' ); ?></p>
 					<h2 id="about-story-title" class="mt-5 text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] text-ink md:text-5xl">
 						<?php esc_html_e( 'Support that feels personal,', 'amanahcareservices' ); ?>
@@ -70,16 +93,16 @@ $about_promises = array(
 					<?php endif; ?>
 				</div>
 
-				<div class="relative lg:col-span-5" data-reveal>
+				<div class="relative lg:col-span-6" data-reveal>
 					<?php
 					$about_image_class = 'h-[420px] w-full object-cover transition duration-700 group-hover:scale-[1.04] sm:h-[540px]';
 					?>
-					<div class="relative mx-auto max-w-md lg:max-w-none">
+					<div class="relative mx-auto max-w-lg lg:max-w-none">
 						<!-- Decorative frame -->
-						<span class="absolute -right-4 -top-4 bottom-10 left-10 rounded-[2rem_2rem_6rem_2rem] border-2 border-dashed border-primary/20" aria-hidden="true"></span>
+						<span class="absolute -right-4 -top-4 bottom-10 left-10 rounded-[2rem] border-2 border-dashed border-primary/20" aria-hidden="true"></span>
 
 						<!-- Photo -->
-						<figure class="group relative overflow-hidden rounded-[2rem_2rem_6rem_2rem] shadow-[0_35px_80px_-25px_rgba(27,11,58,0.45)]">
+						<figure class="group relative overflow-hidden rounded-[2rem] shadow-[0_35px_80px_-25px_rgba(27,11,58,0.45)]">
 							<?php
 							if ( $about_image_id ) {
 								echo wp_get_attachment_image( $about_image_id, 'large', false, array( 'class' => $about_image_class . ' object-center', 'loading' => 'lazy' ) );
@@ -180,28 +203,118 @@ $about_promises = array(
 
 	<!-- Promise -->
 	<section class="amanah-dark-section relative isolate overflow-hidden py-20 text-white sm:py-24 lg:py-28" aria-labelledby="about-promise-title">
+		<!-- Soft glow -->
+		<span class="pointer-events-none absolute -right-40 top-1/3 -z-10 h-[28rem] w-[28rem] rounded-full bg-secondary/20 blur-[120px]" aria-hidden="true"></span>
+
 		<div class="container mx-auto px-5 md:px-8 lg:px-12">
-			<div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
+			<div class="grid gap-14 lg:grid-cols-12 lg:gap-12 xl:gap-16">
+				<!-- Intro -->
 				<div class="lg:col-span-5" data-reveal>
-					<p class="amanah-eyebrow amanah-eyebrow--light"><?php esc_html_e( 'Our promise to you', 'amanahcareservices' ); ?></p>
-					<h2 id="about-promise-title" class="mt-5 text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] md:text-5xl">
+					<p class="amanah-eyebrow amanah-eyebrow--light !text-secondary"><?php esc_html_e( 'Our promise to you', 'amanahcareservices' ); ?></p>
+					<h2 id="about-promise-title" class="mt-5 text-3xl font-extrabold leading-[1.1] tracking-[-0.035em] md:text-5xl">
 						<?php esc_html_e( 'What you can', 'amanahcareservices' ); ?>
-						<span class="text-leaf"><?php esc_html_e( 'always expect.', 'amanahcareservices' ); ?></span>
+						<span class="text-secondary"><?php esc_html_e( 'always expect.', 'amanahcareservices' ); ?></span>
 					</h2>
 					<p class="mt-6 text-lg leading-8 text-white/70"><?php esc_html_e( 'Trust is earned in the everyday. These are the standards we hold ourselves to, in every visit and every conversation.', 'amanahcareservices' ); ?></p>
-					<a href="<?php echo esc_url( $about_contact['cta_url'] ); ?>" class="group mt-9 inline-flex items-center gap-3 rounded-full bg-white py-3 pl-7 pr-3 text-[12px] font-extrabold uppercase tracking-[0.14em] text-primary shadow-xl transition hover:-translate-y-0.5 hover:bg-mint">
-						<?php esc_html_e( 'Talk to our team', 'amanahcareservices' ); ?>
-						<span class="flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-white transition-transform group-hover:translate-x-0.5"><i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i></span>
-					</a>
+
+					<!-- Amanah seal card -->
+					<figure class="relative mt-10 overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.10] to-white/[0.02] p-7 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-md sm:p-8">
+						<span class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/40 blur-3xl" aria-hidden="true"></span>
+						<div class="relative flex items-center gap-4">
+							<span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-secondary to-secondaryDark text-xl text-white shadow-[0_15px_30px_-10px_rgba(46,162,42,0.7)] ring-1 ring-inset ring-white/20">
+								<i class="fa-solid fa-shield-heart" aria-hidden="true"></i>
+							</span>
+							<div>
+								<p class="text-[11px] font-extrabold uppercase tracking-[0.22em] text-secondary"><?php esc_html_e( 'Amanah', 'amanahcareservices' ); ?> <span lang="ar" class="ml-1 font-semibold tracking-normal text-white/60">أمانة</span></p>
+								<p class="mt-1 text-lg font-extrabold leading-snug text-white"><?php esc_html_e( 'A trust, held with care.', 'amanahcareservices' ); ?></p>
+							</div>
+						</div>
+						<blockquote class="relative mt-6 border-l-2 border-secondary pl-5 text-[15px] leading-7 text-white/75">
+							<?php esc_html_e( 'Our name is our promise. Every visit, every conversation and every decision is guided by the trust you place in us.', 'amanahcareservices' ); ?>
+						</blockquote>
+					</figure>
+
+					<div class="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+						<a href="<?php echo esc_url( $about_contact['cta_url'] ); ?>"
+							class="group relative inline-flex min-h-[50px] items-center justify-center overflow-hidden rounded-md bg-white px-7 text-[11px] font-extrabold uppercase tracking-[0.14em] text-primary shadow-[0_14px_32px_rgba(0,0,0,.25)] transition duration-300 hover:-translate-y-0.5 hover:bg-soft">
+							<span><?php esc_html_e( 'Talk to our team', 'amanahcareservices' ); ?></span>
+							<span class="ml-3 flex items-center">
+								<i class="fa-solid fa-arrow-right text-[12px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i>
+							</span>
+							<span class="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-secondary transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
+						</a>
+						<?php if ( $about_phone['label'] ) : ?>
+							<a href="<?php echo esc_attr( $about_phone['uri'] ); ?>"
+								class="group relative inline-flex min-h-[50px] items-center justify-center gap-3 overflow-hidden rounded-md border border-white/25 px-7 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white transition duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10">
+								<i class="fa-solid fa-phone text-[12px] text-secondary" aria-hidden="true"></i>
+								<span><?php echo esc_html( $about_phone['label'] ); ?></span>
+								<span class="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-secondary transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
+							</a>
+						<?php endif; ?>
+					</div>
 				</div>
-				<ul class="grid gap-4 lg:col-span-7" data-reveal>
+
+				<!-- Promise cards -->
+				<ol class="grid gap-5 self-center sm:grid-cols-2 lg:col-span-7" data-reveal>
 					<?php foreach ( $about_promises as $promise ) : ?>
-						<li class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-5 backdrop-blur transition hover:border-leaf/40 hover:bg-white/[0.08]">
-							<span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-secondary text-white"><i class="fa-solid fa-check text-xs" aria-hidden="true"></i></span>
-							<span class="pt-0.5 text-[15px] font-semibold leading-7 text-white/90"><?php echo esc_html( $promise ); ?></span>
+						<li class="group relative isolate overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:border-secondary/50 hover:bg-white/[0.07] hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.7)]">
+
+							<span class="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#7b4dd1] to-primaryDark text-lg text-secondary shadow-[0_12px_25px_-10px_rgba(0,0,0,0.6)] ring-1 ring-inset ring-white/15 transition duration-500 group-hover:from-secondary group-hover:to-secondaryDark group-hover:text-white">
+								<i class="fa-solid <?php echo esc_attr( $promise['icon'] ); ?>" aria-hidden="true"></i>
+							</span>
+							<div class="relative mt-7">
+								<h3 class="text-lg font-extrabold tracking-[-0.01em] text-white"><?php echo esc_html( $promise['title'] ); ?></h3>
+								<p class="mt-2 text-[15px] leading-7 text-white/65"><?php echo esc_html( $promise['text'] ); ?></p>
+							</div>
 						</li>
 					<?php endforeach; ?>
-				</ul>
+				</ol>
+			</div>
+		</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="relative isolate overflow-hidden bg-[#fbfafe] py-20 sm:py-24 lg:py-28" aria-labelledby="about-faq-title">
+		<div class="container mx-auto px-5 md:px-8 lg:px-12">
+			<div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+				<div class="lg:col-span-4" data-reveal>
+					<p class="amanah-eyebrow"><?php esc_html_e( 'Helpful answers', 'amanahcareservices' ); ?></p>
+					<h2 id="about-faq-title" class="mt-5 text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] text-ink md:text-5xl"><?php esc_html_e( 'Questions are always welcome.', 'amanahcareservices' ); ?></h2>
+					<p class="mt-6 leading-7 text-body"><?php esc_html_e( 'Can’t find what you’re looking for? Reach out and we’ll give you a straightforward answer.', 'amanahcareservices' ); ?></p>
+					<a href="<?php echo esc_url( $about_contact['cta_url'] ); ?>" class="group mt-7 inline-flex items-center gap-3 text-sm font-extrabold text-primary">
+						<?php esc_html_e( 'Ask us anything', 'amanahcareservices' ); ?>
+						<span class="flex h-10 w-10 items-center justify-center rounded-full bg-soft transition group-hover:translate-x-1 group-hover:bg-primary group-hover:text-white"><i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i></span>
+					</a>
+
+					<?php if ( $about_socials ) : ?>
+						<div class="mt-10 border-t border-[#ece6f6] pt-7">
+							<p class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-body"><?php esc_html_e( 'Follow our journey', 'amanahcareservices' ); ?></p>
+							<div class="mt-4 flex flex-wrap gap-2.5">
+								<?php foreach ( $about_socials as $social ) : ?>
+									<a href="<?php echo esc_url( $social['url'] ); ?>" target="_blank" rel="noopener noreferrer"
+										aria-label="<?php echo esc_attr( sprintf( /* translators: %s: social network. */ __( 'Follow us on %s (opens in a new tab)', 'amanahcareservices' ), $social['label'] ) ); ?>"
+										class="flex h-11 w-11 items-center justify-center rounded-xl border border-[#e6def5] bg-white text-primary transition hover:-translate-y-0.5 hover:border-primary hover:bg-primary hover:text-white">
+										<i class="fa-brands <?php echo esc_attr( $social['icon'] ); ?>" aria-hidden="true"></i>
+									</a>
+								<?php endforeach; ?>
+							</div>
+						</div>
+					<?php endif; ?>
+				</div>
+
+				<div class="space-y-4 lg:col-span-8" data-reveal>
+					<?php foreach ( $about_faqs as $index => $faq ) : ?>
+						<details class="amanah-faq group rounded-[1.5rem] border border-[#ece6f6] bg-white px-6 transition-shadow open:shadow-[0_20px_45px_-20px_rgba(27,11,58,0.18)] sm:px-8" <?php echo 0 === $index ? 'open' : ''; ?>>
+							<summary class="flex cursor-pointer list-none items-center justify-between gap-5 py-6">
+								<span class="text-base font-extrabold text-ink sm:text-lg"><?php echo esc_html( $faq['question'] ); ?></span>
+								<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-soft text-primary transition duration-300 group-open:rotate-45 group-open:bg-primary group-open:text-white">
+									<i class="fa-solid fa-plus text-sm" aria-hidden="true"></i>
+								</span>
+							</summary>
+							<p class="max-w-3xl pb-7 pr-4 leading-7 text-body sm:pr-14"><?php echo esc_html( $faq['answer'] ); ?></p>
+						</details>
+					<?php endforeach; ?>
+				</div>
 			</div>
 		</div>
 	</section>
