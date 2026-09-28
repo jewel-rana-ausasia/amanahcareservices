@@ -314,7 +314,7 @@ $amanah_socials = amanahcareservices_get_social_links();
 				<div class="flex items-center gap-5 lg:gap-7">
 					<p class="flex items-center gap-2 text-white/90">
 						<i class="fa-solid fa-heart text-[11px] text-leaf" aria-hidden="true"></i>
-						<span class="font-display text-[13px] tracking-wide"><?php esc_html_e( 'Quality Care You Can Trust', 'amanahcareservices' ); ?></span>
+						<span class="font-display text-[13px] tracking-wide"><?php esc_html_e( 'Amanah Means Trust. We Honour It.', 'amanahcareservices' ); ?></span>
 					</p>
 					<?php if ( $amanah_contact['service_area'] ) : ?>
 						<p class="hidden items-center gap-2 border-l border-white/15 pl-5 text-white/80 lg:flex">
