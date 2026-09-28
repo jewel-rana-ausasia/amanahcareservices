@@ -202,7 +202,7 @@ function amanahcareservices_customize_register( $wp_customize ) {
 		)
 	);
 
-	for ( $i = 1; $i <= 3; $i++ ) {
+	for ( $i = 1; $i <= amanahcareservices_testimonial_slots(); $i++ ) {
 		$testimonial_fields = array(
 			'quote' => array( __( 'Quote', 'amanahcareservices' ), 'textarea', 'sanitize_textarea_field' ),
 			'name'  => array( __( 'Name', 'amanahcareservices' ), 'text', 'sanitize_text_field' ),

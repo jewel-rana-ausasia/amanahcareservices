@@ -82,7 +82,7 @@ $hero_bg = $hero_image_id
 				</a>
 
 				<a href="<?php echo esc_attr(! empty($hero_phone['uri']) ? $hero_phone['uri'] : $hero_contact['cta_url']); ?>" class="group inline-flex min-h-[50px] items-center justify-center gap-2.5 rounded-md border-2 border-primary bg-white/90 px-6 text-[11px] font-extrabold uppercase tracking-[0.14em] text-primary backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white">
-					<i class="fa-solid fa-phone text-[12px] text-secondary transition-colors duration-300 group-hover:text-white" aria-hidden="true"></i>
+					<i class="fa-solid fa-phone text-[12px] text-secondaryDark transition-colors duration-300 group-hover:text-white" aria-hidden="true"></i>
 					<span><?php esc_html_e('Talk to Our Team', 'amanahcareservices'); ?></span>
 				</a>
 

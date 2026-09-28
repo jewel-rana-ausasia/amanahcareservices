@@ -115,7 +115,7 @@ $contact_steps = array(
 				<aside class="flex lg:col-span-5" aria-label="<?php esc_attr_e( 'Contact details', 'amanahcareservices' ); ?>" data-reveal>
 					<div class="relative flex w-full flex-col bg-gradient-to-br from-primaryDark to-ink overflow-hidden rounded-[1.75rem] p-8 text-white shadow-[0_30px_70px_-30px_rgba(27,11,58,0.55)] sm:p-10">
 						<div class="relative">
-							<p class="amanah-eyebrow amanah-eyebrow--light"><?php esc_html_e( 'Get in touch', 'amanahcareservices' ); ?></p>
+							<p class="amanah-eyebrow amanah-eyebrow--green"><?php esc_html_e( 'Get in touch', 'amanahcareservices' ); ?></p>
 							<h2 class="mt-5 text-3xl font-extrabold leading-tight tracking-[-0.02em] sm:text-[2.1rem]"><?php esc_html_e( 'Talk to our team', 'amanahcareservices' ); ?></h2>
 							<p class="mt-4 leading-7 text-white/70"><?php esc_html_e( 'Call, email or send us a message. We’re happy to help.', 'amanahcareservices' ); ?></p>
 						</div>
@@ -129,12 +129,12 @@ $contact_steps = array(
 										$row_attrs = $row['url'] ? ' href="' . esc_attr( $row['url'] ) . '"' . ( ! empty( $row['external'] ) ? ' target="_blank" rel="noopener noreferrer"' : '' ) : '';
 										?>
 										<<?php echo $row_tag; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo $row_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> class="group flex items-center gap-4 py-5">
-											<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/[0.08] text-leaf ring-1 ring-white/10 transition duration-300<?php echo $row['url'] ? ' group-hover:bg-leaf group-hover:text-ink' : ''; ?>">
+											<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/[0.08] text-secondaryDark ring-1 ring-white/10 transition duration-300<?php echo $row['url'] ? ' group-hover:bg-leaf group-hover:text-ink' : ''; ?>">
 												<i class="fa-solid <?php echo esc_attr( $row['icon'] ); ?>" aria-hidden="true"></i>
 											</span>
 											<span class="min-w-0 flex-1">
 												<span class="block text-xs font-semibold uppercase tracking-[0.16em] text-white/50"><?php echo esc_html( $row['label'] ); ?></span>
-												<span class="mt-1 block break-words font-bold leading-6 text-white transition<?php echo $row['url'] ? ' group-hover:text-leaf' : ''; ?>"><?php echo nl2br( esc_html( $row['value'] ) ); ?></span>
+												<span class="mt-1 block break-words font-bold leading-6 text-white transition<?php echo $row['url'] ? ' group-hover:text-secondaryDark' : ''; ?>"><?php echo nl2br( esc_html( $row['value'] ) ); ?></span>
 											</span>
 										</<?php echo $row_tag; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 									</li>
@@ -163,7 +163,7 @@ $contact_steps = array(
 				<div id="contact-form" class="flex flex-col rounded-[1.75rem] border border-[#ebe5f5] bg-white p-7 shadow-[0_30px_70px_-40px_rgba(27,11,58,0.35)] sm:p-10 lg:col-span-7" data-reveal>
 					<?php if ( 'sent' === $contact_status ) : ?>
 						<div class="my-auto py-6 text-center" role="status" tabindex="-1" data-contact-focus>
-							<span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-mint text-2xl text-secondary"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+							<span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-mint text-2xl text-secondaryDark"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
 							<h2 id="contact-form-title" class="mt-5 text-2xl font-extrabold text-ink sm:text-3xl"><?php esc_html_e( 'Thank you for reaching out.', 'amanahcareservices' ); ?></h2>
 							<p class="mx-auto mt-3 max-w-md leading-7 text-body"><?php esc_html_e( 'Your message is with our team and we’ll be in touch soon. If your enquiry is urgent, please give us a call.', 'amanahcareservices' ); ?></p>
 							<a href="<?php echo esc_url( get_permalink() . '#contact-form' ); ?>" class="mt-6 inline-block font-bold text-primary underline underline-offset-4"><?php esc_html_e( 'Send another message', 'amanahcareservices' ); ?></a>

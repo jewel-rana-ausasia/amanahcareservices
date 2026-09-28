@@ -42,7 +42,7 @@ $amanah_socials = amanahcareservices_get_social_links();
 						soft: '#F6F2FD',
 						lilac: '#C9B6F0',
 						secondary: '#2EA22A',
-						secondaryDark: '#1E7A1B',
+						secondaryDark: '#248F20',
 						mint: '#EEF8EC',
 						leaf: '#9BE08F',
 						body: '#524A63'
@@ -428,17 +428,17 @@ $amanah_socials = amanahcareservices_get_social_links();
 			<div class="container mx-auto flex min-h-[42px] items-center justify-between gap-6 px-4 text-[12px] font-semibold md:px-6">
 				<div class="flex items-center gap-5 lg:gap-7">
 					<p class="flex items-center gap-2 text-white/90">
-						<i class="fa-solid fa-heart text-[11px] text-leaf" aria-hidden="true"></i>
+						<i class="fa-solid fa-heart text-[11px] text-secondaryDark" aria-hidden="true"></i>
 						<span class="font-display text-[13px] tracking-wide"><?php esc_html_e( 'Amanah Means Trust. We Honour It.', 'amanahcareservices' ); ?></span>
 					</p>
 					<?php if ( $amanah_contact['service_area'] ) : ?>
 						<p class="hidden items-center gap-2 border-l border-white/15 pl-5 text-white/80 lg:flex">
-							<i class="fa-solid fa-location-dot text-[11px] text-leaf" aria-hidden="true"></i>
+							<i class="fa-solid fa-location-dot text-[11px] text-secondaryDark" aria-hidden="true"></i>
 							<?php echo esc_html( $amanah_contact['service_area'] ); ?>
 						</p>
 					<?php elseif ( $amanah_contact['business_hours'] ) : ?>
 						<p class="hidden items-center gap-2 border-l border-white/15 pl-5 text-white/80 lg:flex">
-							<i class="fa-regular fa-clock text-[11px] text-leaf" aria-hidden="true"></i>
+							<i class="fa-regular fa-clock text-[11px] text-secondaryDark" aria-hidden="true"></i>
 							<?php echo esc_html( strtok( $amanah_contact['business_hours'], "\n" ) ); ?>
 						</p>
 					<?php endif; ?>
@@ -446,15 +446,15 @@ $amanah_socials = amanahcareservices_get_social_links();
 
 				<div class="flex items-center gap-5">
 					<?php if ( $amanah_contact['email'] ) : ?>
-						<a class="flex items-center gap-2 text-white/90 transition hover:text-leaf" href="mailto:<?php echo esc_attr( antispambot( $amanah_contact['email'] ) ); ?>">
-							<i class="fa-solid fa-envelope text-[11px] text-leaf" aria-hidden="true"></i>
+						<a class="flex items-center gap-2 text-white/90 transition hover:text-secondaryDark" href="mailto:<?php echo esc_attr( antispambot( $amanah_contact['email'] ) ); ?>">
+							<i class="fa-solid fa-envelope text-[11px] text-secondaryDark" aria-hidden="true"></i>
 							<?php echo esc_html( antispambot( $amanah_contact['email'] ) ); ?>
 						</a>
 					<?php endif; ?>
 
 					<?php if ( $amanah_phone['label'] ) : ?>
-						<a class="flex items-center gap-2 text-white transition hover:text-leaf" href="<?php echo esc_attr( $amanah_phone['uri'] ); ?>">
-							<i class="fa-solid fa-phone text-[11px] text-leaf" aria-hidden="true"></i>
+						<a class="flex items-center gap-2 text-white transition hover:text-secondaryDark" href="<?php echo esc_attr( $amanah_phone['uri'] ); ?>">
+							<i class="fa-solid fa-phone text-[11px] text-secondaryDark" aria-hidden="true"></i>
 							<?php echo esc_html( $amanah_phone['label'] ); ?>
 						</a>
 					<?php endif; ?>
@@ -580,7 +580,7 @@ $amanah_socials = amanahcareservices_get_social_links();
 									<span class="block text-[10px] font-bold uppercase tracking-[0.16em] text-body/80"><?php echo esc_html( $amanah_call_eye ); ?></span>
 									<span class="mt-0.5 block text-[15px] font-extrabold text-ink"><?php echo esc_html( $amanah_call_label ); ?></span>
 								</span>
-								<i class="fa-solid fa-chevron-right text-[10px] text-[#bfb0dd] transition group-hover:translate-x-0.5 group-hover:text-secondary" aria-hidden="true"></i>
+								<i class="fa-solid fa-chevron-right text-[10px] text-[#bfb0dd] transition group-hover:translate-x-0.5 group-hover:text-secondaryDark" aria-hidden="true"></i>
 							</a>
 						</div>
 
@@ -588,12 +588,12 @@ $amanah_socials = amanahcareservices_get_social_links();
 							<div class="relative mt-5 overflow-hidden rounded-2xl bg-gradient-to-br from-ink via-[#2a0f5a] to-primaryDark p-5 text-white">
 								<span class="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-secondary/25 blur-3xl" aria-hidden="true"></span>
 								<p class="relative flex items-center gap-2 font-display text-[15px] tracking-wide text-white/95">
-									<i class="fa-solid fa-heart text-[11px] text-leaf" aria-hidden="true"></i>
+									<i class="fa-solid fa-heart text-[11px] text-secondaryDark" aria-hidden="true"></i>
 									<?php esc_html_e( 'Amanah Means Trust. We Honour It.', 'amanahcareservices' ); ?>
 								</p>
 								<?php if ( $amanah_contact['email'] ) : ?>
-									<a class="relative mt-4 flex items-center gap-3 text-sm font-semibold text-white/85 transition hover:text-leaf" href="mailto:<?php echo esc_attr( antispambot( $amanah_contact['email'] ) ); ?>">
-										<span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-leaf">
+									<a class="relative mt-4 flex items-center gap-3 text-sm font-semibold text-white/85 transition hover:text-secondaryDark" href="mailto:<?php echo esc_attr( antispambot( $amanah_contact['email'] ) ); ?>">
+										<span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-secondaryDark">
 											<i class="fa-solid fa-envelope text-[12px]" aria-hidden="true"></i>
 										</span>
 										<span class="min-w-0 break-all"><?php echo esc_html( antispambot( $amanah_contact['email'] ) ); ?></span>

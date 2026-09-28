@@ -59,14 +59,14 @@ $footer_service_links = amanahcareservices_get_menu_links(
 
 				<?php if ( $footer_socials ) : ?>
 					<div class="mt-7">
-						<p class="mb-4 text-[11px] font-extrabold uppercase tracking-[0.2em] text-leaf"><?php esc_html_e( 'Connect With Us', 'amanahcareservices' ); ?></p>
+						<p class="mb-4 text-[11px] font-extrabold uppercase tracking-[0.2em] text-secondaryDark"><?php esc_html_e( 'Connect With Us', 'amanahcareservices' ); ?></p>
 						<div class="flex flex-wrap items-center gap-3">
 							<?php foreach ( $footer_socials as $footer_social ) : ?>
 								<a href="<?php echo esc_url( $footer_social['url'] ); ?>"
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label="<?php echo esc_attr( sprintf( /* translators: %s: social network. */ __( 'Follow us on %s (opens in a new tab)', 'amanahcareservices' ), $footer_social['label'] ) ); ?>"
-									class="group relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/[0.06] text-white transition duration-300 hover:-translate-y-1 hover:border-leaf/60">
+									class="group relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/[0.06] text-white transition duration-300 hover:-translate-y-1 hover:border-secondaryDark/60">
 									<span class="absolute inset-0 translate-y-full bg-gradient-to-br from-secondary to-secondaryDark transition-transform duration-300 group-hover:translate-y-0" aria-hidden="true"></span>
 									<i class="fa-brands <?php echo esc_attr( $footer_social['icon'] ); ?> relative z-10" aria-hidden="true"></i>
 								</a>
@@ -94,7 +94,7 @@ $footer_service_links = amanahcareservices_get_menu_links(
 						<li><a href="<?php echo esc_url( $link['url'] ); ?>"><?php echo esc_html( $link['label'] ); ?></a></li>
 					<?php endforeach; ?>
 				</ul>
-				<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="group mt-6 inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.16em] text-leaf transition hover:text-white">
+				<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="group mt-6 inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.16em] text-secondaryDark transition hover:text-white">
 					<?php esc_html_e( 'All services', 'amanahcareservices' ); ?>
 					<i class="fa-solid fa-arrow-right text-[9px] transition-transform group-hover:translate-x-1" aria-hidden="true"></i>
 				</a>
@@ -102,20 +102,20 @@ $footer_service_links = amanahcareservices_get_menu_links(
 
 			<!-- Contact -->
 			<div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 md:p-8 xl:col-span-3">
-				<span class="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-leaf/60 to-transparent" aria-hidden="true"></span>
+				<span class="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-secondaryDark/60 to-transparent" aria-hidden="true"></span>
 				<h2 class="text-xl font-extrabold text-white"><?php esc_html_e( 'Get In Touch', 'amanahcareservices' ); ?></h2>
 
 				<ul class="mt-6 space-y-4 text-sm">
 					<?php if ( $footer_contact['phone'] || $footer_contact['mobile'] ) : ?>
 						<li class="flex items-start gap-4">
-							<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-leaf"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+							<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-secondaryDark"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
 							<span>
 								<span class="mb-0.5 block font-bold text-white"><?php esc_html_e( 'Call Us', 'amanahcareservices' ); ?></span>
 								<?php if ( $footer_contact['phone'] ) : ?>
-									<a class="block transition hover:text-leaf" href="<?php echo esc_attr( $footer_contact['phone_uri'] ); ?>"><?php echo esc_html( $footer_contact['phone'] ); ?></a>
+									<a class="block transition hover:text-secondaryDark" href="<?php echo esc_attr( $footer_contact['phone_uri'] ); ?>"><?php echo esc_html( $footer_contact['phone'] ); ?></a>
 								<?php endif; ?>
 								<?php if ( $footer_contact['mobile'] ) : ?>
-									<a class="block transition hover:text-leaf" href="<?php echo esc_attr( $footer_contact['mobile_uri'] ); ?>"><?php echo esc_html( $footer_contact['mobile'] ); ?></a>
+									<a class="block transition hover:text-secondaryDark" href="<?php echo esc_attr( $footer_contact['mobile_uri'] ); ?>"><?php echo esc_html( $footer_contact['mobile'] ); ?></a>
 								<?php endif; ?>
 							</span>
 						</li>
@@ -123,25 +123,25 @@ $footer_service_links = amanahcareservices_get_menu_links(
 
 					<?php if ( $footer_contact['email'] ) : ?>
 						<li class="flex items-start gap-4">
-							<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-leaf"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+							<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-secondaryDark"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
 							<span class="min-w-0">
 								<span class="mb-0.5 block font-bold text-white"><?php esc_html_e( 'Email Us', 'amanahcareservices' ); ?></span>
-								<a class="break-all transition hover:text-leaf" href="mailto:<?php echo esc_attr( antispambot( $footer_contact['email'] ) ); ?>"><?php echo esc_html( antispambot( $footer_contact['email'] ) ); ?></a>
+								<a class="break-all transition hover:text-secondaryDark" href="mailto:<?php echo esc_attr( antispambot( $footer_contact['email'] ) ); ?>"><?php echo esc_html( antispambot( $footer_contact['email'] ) ); ?></a>
 							</span>
 						</li>
 					<?php endif; ?>
 
 					<?php if ( $footer_contact['address'] ) : ?>
 						<li class="flex items-start gap-4">
-							<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-leaf"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+							<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-secondaryDark"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
 							<address class="mb-0 not-italic">
 								<span class="mb-0.5 block font-bold text-white"><?php esc_html_e( 'Visit Us', 'amanahcareservices' ); ?></span>
-								<a class="transition hover:text-leaf" href="<?php echo esc_url( $footer_contact['map_url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php echo nl2br( esc_html( $footer_contact['address'] ) ); ?></a>
+								<a class="transition hover:text-secondaryDark" href="<?php echo esc_url( $footer_contact['map_url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php echo nl2br( esc_html( $footer_contact['address'] ) ); ?></a>
 							</address>
 						</li>
 					<?php elseif ( $footer_contact['service_area'] ) : ?>
 						<li class="flex items-start gap-4">
-							<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-leaf"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+							<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-secondaryDark"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
 							<span>
 								<span class="mb-0.5 block font-bold text-white"><?php esc_html_e( 'Service Area', 'amanahcareservices' ); ?></span>
 								<?php echo esc_html( $footer_contact['service_area'] ); ?>
@@ -151,7 +151,7 @@ $footer_service_links = amanahcareservices_get_menu_links(
 
 					<?php if ( $footer_contact['business_hours'] ) : ?>
 						<li class="flex items-start gap-4">
-							<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-leaf"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
+							<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-secondaryDark"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
 							<span>
 								<span class="mb-0.5 block font-bold text-white"><?php esc_html_e( 'Business Hours', 'amanahcareservices' ); ?></span>
 								<?php echo nl2br( esc_html( $footer_contact['business_hours'] ) ); ?>
@@ -162,7 +162,7 @@ $footer_service_links = amanahcareservices_get_menu_links(
 
 				<?php if ( $footer_contact['ndis_number'] ) : ?>
 					<p class="mt-6 flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3 text-xs font-semibold text-white/85">
-						<i class="fa-solid fa-shield-heart text-base text-leaf" aria-hidden="true"></i>
+						<i class="fa-solid fa-shield-heart text-base text-secondaryDark" aria-hidden="true"></i>
 						<span>
 							<?php esc_html_e( 'Registered NDIS Provider', 'amanahcareservices' ); ?>
 							<span class="block text-white/60"><?php echo esc_html( sprintf( /* translators: %s: NDIS registration number. */ __( 'Registration No. %s', 'amanahcareservices' ), $footer_contact['ndis_number'] ) ); ?></span>
@@ -180,10 +180,10 @@ $footer_service_links = amanahcareservices_get_menu_links(
 				<?php endif; ?>
 			</p>
 			<p class="flex flex-wrap items-center justify-center gap-3">
-				<a href="<?php echo esc_url( get_privacy_policy_url() ? get_privacy_policy_url() : home_url( '/privacy-policy/' ) ); ?>" class="font-semibold text-white/85 transition hover:text-leaf"><?php esc_html_e( 'Privacy Policy', 'amanahcareservices' ); ?></a>
+				<a href="<?php echo esc_url( get_privacy_policy_url() ? get_privacy_policy_url() : home_url( '/privacy-policy/' ) ); ?>" class="font-semibold text-white/85 transition hover:text-secondaryDark"><?php esc_html_e( 'Privacy Policy', 'amanahcareservices' ); ?></a>
 				<span class="border-l border-white/20 pl-3">
 					<?php esc_html_e( 'Website by', 'amanahcareservices' ); ?>
-					<a href="https://www.ausasiaonline.com.au/" target="_blank" rel="noopener noreferrer" class="font-bold text-leaf transition hover:text-white">Aus Asia Online</a>
+					<a href="https://www.ausasiaonline.com.au/" target="_blank" rel="noopener noreferrer" class="font-bold text-secondaryDark transition hover:text-white">Aus Asia Online</a>
 				</span>
 			</p>
 		</div>
@@ -258,7 +258,7 @@ $footer_service_links = amanahcareservices_get_menu_links(
 		width: 0.32rem;
 		height: 0.32rem;
 		border-radius: 9999px;
-		background: #9be08f;
+		background: #248F20;
 		content: "";
 		opacity: 0.6;
 		transition: opacity 0.25s ease, box-shadow 0.25s ease;
@@ -271,7 +271,7 @@ $footer_service_links = amanahcareservices_get_menu_links(
 
 	.amanah-footer-links a:hover::before {
 		opacity: 1;
-		box-shadow: 0 0 0 4px rgba(155, 224, 143, 0.14);
+		box-shadow: 0 0 0 4px rgba(36, 143, 32, 0.25);
 	}
 
 	.amanah-footer-heading {
@@ -284,7 +284,7 @@ $footer_service_links = amanahcareservices_get_menu_links(
 		width: 2rem;
 		height: 2px;
 		border-radius: 9999px;
-		background: linear-gradient(90deg, #2ea22a, transparent);
+		background: linear-gradient(90deg, #248F20, transparent);
 		content: "";
 	}
 </style>

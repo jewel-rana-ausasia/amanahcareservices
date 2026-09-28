@@ -236,7 +236,7 @@ $btn_arrow   = '<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow
 									</a>
 									<?php if ( $services_phone['label'] ) : ?>
 										<a href="<?php echo esc_attr( $services_phone['uri'] ); ?>" class="<?php echo esc_attr( $btn_ghost ); ?>">
-											<i class="fa-solid fa-phone text-[12px] text-leaf" aria-hidden="true"></i>
+											<i class="fa-solid fa-phone text-[12px] text-secondaryDark" aria-hidden="true"></i>
 											<span><?php echo esc_html( $services_phone['label'] ); ?></span>
 											<?php echo $btn_bar; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup. ?>
 										</a>
@@ -445,7 +445,7 @@ $btn_arrow   = '<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow
 
 	.amanah-svc-tab[aria-selected="true"] .amanah-svc-tab__icon {
 		background: rgba(255, 255, 255, 0.18);
-		color: #9BE08F;
+		color: #ffffff;
 	}
 
 	/* Before JS runs every tab looks the same; nothing is "selected" yet. */
@@ -532,7 +532,7 @@ $btn_arrow   = '<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow
 	.is-green .amanah-svc-media {
 		background:
 			radial-gradient(circle at 0% 0%, rgba(201, 182, 240, 0.4), transparent 45%),
-			linear-gradient(150deg, #36b531 0%, #1e7a1b 60%, #124d11 100%);
+			linear-gradient(150deg, #36b531 0%, #248F20 60%, #124d11 100%);
 	}
 
 	.amanah-svc-media__img {
@@ -625,8 +625,8 @@ $btn_arrow   = '<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow
 	}
 
 	.is-green .amanah-svc-media__icon {
-		background: linear-gradient(145deg, #36b531, #1e7a1b);
-		box-shadow: 0 12px 24px -10px rgba(30, 122, 27, 0.7);
+		background: linear-gradient(145deg, #36b531, #248F20);
+		box-shadow: 0 12px 24px -10px rgba(36, 143, 32, 0.7);
 	}
 
 	/* Content */
@@ -644,7 +644,7 @@ $btn_arrow   = '<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow
 
 	.is-green .amanah-svc-kicker {
 		background: #EEF8EC;
-		color: #1E7A1B;
+		color: #248F20;
 	}
 
 	.amanah-svc-lead {
@@ -699,8 +699,8 @@ $btn_arrow   = '<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow
 	}
 
 	.is-green .amanah-svc-block__icon {
-		background: linear-gradient(145deg, #36b531, #1e7a1b);
-		box-shadow: 0 10px 20px -10px rgba(30, 122, 27, 0.7);
+		background: linear-gradient(145deg, #36b531, #248F20);
+		box-shadow: 0 10px 20px -10px rgba(36, 143, 32, 0.7);
 	}
 
 	.amanah-svc-includes {
@@ -737,7 +737,7 @@ $btn_arrow   = '<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow
 		margin-top: 0.1rem;
 		border-radius: 999px;
 		background: #EEF8EC;
-		color: #1E7A1B;
+		color: #248F20;
 		font-size: 0.6rem;
 	}
 
@@ -812,7 +812,7 @@ $btn_arrow   = '<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow
 	}
 
 	.is-green .amanah-svc-step {
-		background: #1E7A1B;
+		background: #248F20;
 	}
 
 	.amanah-svc-pager > a {
@@ -854,7 +854,7 @@ $btn_arrow   = '<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow
 		border: 1px solid rgba(255, 255, 255, 0.2);
 		border-radius: 1rem;
 		background: rgba(255, 255, 255, 0.1);
-		color: #9BE08F;
+		color: #248F20;
 		font-size: 1.1rem;
 	}
 

@@ -64,19 +64,6 @@ $home_faqs = array(
 		'answer'   => 'Yes. Respect for your culture, faith, language and family values is part of who we are. Let us know what matters to you and we’ll build it into your support.',
 	),
 );
-
-$home_testimonials = array();
-for ( $i = 1; $i <= 3; $i++ ) {
-	$quote = trim( (string) get_theme_mod( 'amanahcareservices_testimonial_' . $i . '_quote', '' ) );
-	if ( '' === $quote ) {
-		continue;
-	}
-	$home_testimonials[] = array(
-		'quote' => $quote,
-		'name'  => trim( (string) get_theme_mod( 'amanahcareservices_testimonial_' . $i . '_name', '' ) ),
-		'role'  => trim( (string) get_theme_mod( 'amanahcareservices_testimonial_' . $i . '_role', '' ) ),
-	);
-}
 ?>
 
 <main id="primary" class="site-main overflow-hidden bg-white">
@@ -176,7 +163,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 						</a>
 						<?php if ( $home_contact['ndis_number'] ) : ?>
 							<span class="flex items-center gap-3 text-sm font-bold text-ink">
-								<i class="fa-solid fa-shield-heart text-2xl text-secondary" aria-hidden="true"></i>
+								<i class="fa-solid fa-shield-heart text-2xl text-secondaryDark" aria-hidden="true"></i>
 								<span>
 									<?php esc_html_e( 'Registered NDIS Provider', 'amanahcareservices' ); ?>
 									<span class="block text-xs font-semibold text-body"><?php echo esc_html( sprintf( /* translators: %s: NDIS registration number. */ __( 'Registration No. %s', 'amanahcareservices' ), $home_contact['ndis_number'] ) ); ?></span>
@@ -294,7 +281,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 				<p class="amanah-eyebrow amanah-eyebrow--light justify-center"><?php esc_html_e( 'Getting started', 'amanahcareservices' ); ?></p>
 				<h2 id="home-process-title" class="mt-5 text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] md:text-5xl">
 					<?php esc_html_e( 'Starting support should feel', 'amanahcareservices' ); ?>
-					<span class="text-leaf"><?php esc_html_e( 'simple and clear.', 'amanahcareservices' ); ?></span>
+					<span class="text-secondaryDark"><?php esc_html_e( 'simple and clear.', 'amanahcareservices' ); ?></span>
 				</h2>
 				<p class="mt-6 text-lg leading-8 text-white/70"><?php esc_html_e( 'Four friendly steps, with our team beside you the whole way.', 'amanahcareservices' ); ?></p>
 			</div>
@@ -330,7 +317,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 				<?php if ( $home_phone['label'] ) : ?>
 					<a href="<?php echo esc_attr( $home_phone['uri'] ); ?>"
 						class="group relative inline-flex min-h-[50px] items-center justify-center gap-3 overflow-hidden rounded-md border border-white/25 px-7 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white transition duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10">
-						<i class="fa-solid fa-phone text-[12px] text-leaf" aria-hidden="true"></i>
+						<i class="fa-solid fa-phone text-[12px] text-secondaryDark" aria-hidden="true"></i>
 						<span><?php echo esc_html( $home_phone['label'] ); ?></span>
 						<span class="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-leaf transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
 					</a>
@@ -355,17 +342,17 @@ for ( $i = 1; $i <= 3; $i++ ) {
 						<p class="mt-6 text-lg leading-8 text-body"><?php esc_html_e( 'Showing up on time. Remembering how you take your tea. Asking before assuming. Great care is built on everyday moments of respect.', 'amanahcareservices' ); ?></p>
 
 						<div class="relative mt-10 overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary to-primaryDark p-8 text-white shadow-[0_30px_60px_-20px_rgba(81,31,159,0.55)]">
-							<p class="text-[11px] font-extrabold uppercase tracking-[0.22em] text-leaf"><?php esc_html_e( 'Have a question?', 'amanahcareservices' ); ?></p>
+							<p class="text-[11px] font-extrabold uppercase tracking-[0.22em] text-secondaryDark"><?php esc_html_e( 'Have a question?', 'amanahcareservices' ); ?></p>
 							<p class="mt-3 text-2xl font-extrabold leading-snug"><?php esc_html_e( 'Our friendly team is here to help.', 'amanahcareservices' ); ?></p>
 							<div class="mt-6 space-y-3 text-sm">
 								<?php if ( $home_phone['label'] ) : ?>
-									<a class="flex items-center gap-3 font-bold transition hover:text-leaf" href="<?php echo esc_attr( $home_phone['uri'] ); ?>">
+									<a class="flex items-center gap-3 font-bold transition hover:text-secondaryDark" href="<?php echo esc_attr( $home_phone['uri'] ); ?>">
 										<span class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10"><i class="fa-solid fa-phone text-xs" aria-hidden="true"></i></span>
 										<?php echo esc_html( $home_phone['label'] ); ?>
 									</a>
 								<?php endif; ?>
 								<?php if ( $home_contact['email'] ) : ?>
-									<a class="flex items-center gap-3 break-all font-bold transition hover:text-leaf" href="mailto:<?php echo esc_attr( antispambot( $home_contact['email'] ) ); ?>">
+									<a class="flex items-center gap-3 break-all font-bold transition hover:text-secondaryDark" href="mailto:<?php echo esc_attr( antispambot( $home_contact['email'] ) ); ?>">
 										<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10"><i class="fa-solid fa-envelope text-xs" aria-hidden="true"></i></span>
 										<?php echo esc_html( antispambot( $home_contact['email'] ) ); ?>
 									</a>
@@ -453,37 +440,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 		</div>
 	</section>
 
-	<?php if ( $home_testimonials ) : ?>
-		<!-- =========================================================
-		     Testimonials (only shown when entered in the Customizer)
-		     ========================================================= -->
-		<section class="amanah-process relative isolate overflow-hidden py-20 text-white lg:py-24" aria-labelledby="home-testimonials-title">
-			<div class="container relative mx-auto px-5 md:px-8 lg:px-12">
-				<div class="max-w-3xl" data-reveal>
-					<p class="amanah-eyebrow amanah-eyebrow--light"><?php esc_html_e( 'Kind words', 'amanahcareservices' ); ?></p>
-					<h2 id="home-testimonials-title" class="mt-5 text-3xl font-extrabold tracking-[-0.035em] md:text-5xl"><?php esc_html_e( 'Shared with permission.', 'amanahcareservices' ); ?></h2>
-				</div>
-				<div class="mt-12 grid gap-6 <?php echo count( $home_testimonials ) > 1 ? 'lg:grid-cols-' . count( $home_testimonials ) : 'max-w-3xl'; ?>">
-					<?php foreach ( $home_testimonials as $testimonial ) : ?>
-						<figure class="relative flex flex-col rounded-[2rem] bg-white p-8 text-ink shadow-[0_30px_80px_rgba(0,0,0,0.2)]" data-reveal>
-							<span class="absolute right-7 top-4 font-display text-8xl leading-none text-primary/10" aria-hidden="true">“</span>
-							<span class="flex gap-1 text-secondary" aria-hidden="true"><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></span>
-							<blockquote class="mt-6 flex-1 text-lg font-semibold leading-8"><p><?php echo esc_html( $testimonial['quote'] ); ?></p></blockquote>
-							<figcaption class="mt-8 flex items-center gap-4 border-t border-[#efeaf7] pt-6">
-								<span class="flex h-11 w-11 items-center justify-center rounded-full bg-primary font-extrabold text-white" aria-hidden="true"><?php echo esc_html( $testimonial['name'] ? mb_strtoupper( mb_substr( $testimonial['name'], 0, 1 ) ) : 'A' ); ?></span>
-								<span>
-									<strong class="block text-sm font-extrabold"><?php echo esc_html( $testimonial['name'] ? $testimonial['name'] : __( 'Anonymous', 'amanahcareservices' ) ); ?></strong>
-									<?php if ( $testimonial['role'] ) : ?>
-										<span class="text-xs font-semibold uppercase tracking-[0.1em] text-body"><?php echo esc_html( $testimonial['role'] ); ?></span>
-									<?php endif; ?>
-								</span>
-							</figcaption>
-						</figure>
-					<?php endforeach; ?>
-				</div>
-			</div>
-		</section>
-	<?php endif; ?>
+	<?php get_template_part( 'template-parts/content', 'testimonials' ); ?>
 
 	<!-- =========================================================
 	     FAQ
@@ -626,7 +583,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	.amanah-service-card__media.is-green {
 		background:
 			radial-gradient(circle at 0% 0%, rgba(201, 182, 240, 0.4), transparent 45%),
-			linear-gradient(150deg, #36b531 0%, #1e7a1b 60%, #124d11 100%);
+			linear-gradient(150deg, #36b531 0%, #248F20 60%, #124d11 100%);
 	}
 
 	.amanah-service-card__img {
@@ -726,8 +683,8 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	}
 
 	.amanah-service-card__icon.is-green {
-		background: linear-gradient(145deg, #36b531, #1e7a1b);
-		box-shadow: 0 12px 24px -10px rgba(30, 122, 27, 0.6);
+		background: linear-gradient(145deg, #36b531, #248F20);
+		box-shadow: 0 12px 24px -10px rgba(36, 143, 32, 0.6);
 	}
 
 	.amanah-service-card:hover .amanah-service-card__icon {
@@ -964,7 +921,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	.amanah-step-card.is-green .amanah-step-card__icon-tile {
 		background:
 			radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.4), transparent 55%),
-			linear-gradient(145deg, #5fd35a 0%, #2EA22A 55%, #1E7A1B 100%);
+			linear-gradient(145deg, #5fd35a 0%, #2EA22A 55%, #248F20 100%);
 		box-shadow:
 			inset 0 1px 1px rgba(255, 255, 255, 0.5),
 			inset 0 -6px 12px rgba(18, 77, 17, 0.4);
@@ -1012,6 +969,15 @@ for ( $i = 1; $i <= 3; $i++ ) {
 		.amanah-step-card__icon-tile::after {
 			transition: none;
 		}
+	}
+
+	/* Homepage green text matches the "How we can help" heading. */
+	.site-main .amanah-eyebrow--light {
+		color: #248F20;
+	}
+
+	.site-main .amanah-eyebrow--light::before {
+		background: linear-gradient(90deg, #248F20, rgba(255, 255, 255, 0.4));
 	}
 
 	/* Audience */

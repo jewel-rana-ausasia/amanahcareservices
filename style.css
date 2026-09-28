@@ -545,7 +545,7 @@ a {
 }
 
 .entry-content a:hover {
-	color: #1e7a1b;
+	color: #248F20;
 }
 
 a:focus-visible,
@@ -1002,6 +1002,14 @@ textarea {
 
 .amanah-eyebrow--light::before {
 	background: linear-gradient(90deg, #9be08f, rgba(255, 255, 255, 0.4));
+}
+
+.amanah-eyebrow--green {
+	color: #248f20;
+}
+
+.amanah-eyebrow--green::before {
+	background: linear-gradient(90deg, #248f20, rgba(255, 255, 255, 0.4));
 }
 
 .amanah-gradient-text {

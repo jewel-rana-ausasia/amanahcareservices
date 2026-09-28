@@ -168,6 +168,15 @@ function amanahcareservices_scripts() {
 			file_exists( $slider_script ) ? (string) filemtime( $slider_script ) : _S_VERSION,
 			true
 		);
+
+		$testimonials_script = get_template_directory() . '/js/testimonials-slider.js';
+		wp_enqueue_script(
+			'amanahcareservices-testimonials-slider',
+			get_template_directory_uri() . '/js/testimonials-slider.js',
+			array( 'swiper' ),
+			file_exists( $testimonials_script ) ? (string) filemtime( $testimonials_script ) : _S_VERSION,
+			true
+		);
 	}
 
 	if ( is_page_template( 'page-contact-us.php' ) || is_page( 'contact-us' ) ) {

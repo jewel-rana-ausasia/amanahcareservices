@@ -143,6 +143,40 @@ function amanahcareservices_get_social_links() {
 }
 
 /**
+ * Number of testimonial slots available in the Customizer.
+ *
+ * @return int
+ */
+function amanahcareservices_testimonial_slots() {
+	return 6;
+}
+
+/**
+ * Testimonials that have a quote entered in the Customizer.
+ *
+ * @return array List of array( 'quote', 'name', 'role' ).
+ */
+function amanahcareservices_get_testimonials() {
+	$testimonials = array();
+
+	for ( $i = 1; $i <= amanahcareservices_testimonial_slots(); $i++ ) {
+		$quote = trim( (string) get_theme_mod( 'amanahcareservices_testimonial_' . $i . '_quote', '' ) );
+
+		if ( '' === $quote ) {
+			continue;
+		}
+
+		$testimonials[] = array(
+			'quote' => $quote,
+			'name'  => trim( (string) get_theme_mod( 'amanahcareservices_testimonial_' . $i . '_name', '' ) ),
+			'role'  => trim( (string) get_theme_mod( 'amanahcareservices_testimonial_' . $i . '_role', '' ) ),
+		);
+	}
+
+	return $testimonials;
+}
+
+/**
  * Logo URL: the Customizer logo when set, otherwise the bundled brand file.
  *
  * @param string $variant 'horizontal', 'stacked' or 'mark'.
