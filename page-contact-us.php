@@ -283,29 +283,39 @@ $contact_steps = array(
 		</div>
 	</section>
 
-	<?php if ( $contact_details['address'] ) : ?>
-		<!-- Map -->
-		<section class="mx-auto max-w-[1400px] px-5 py-16 sm:py-20 md:px-8 lg:px-12" aria-label="<?php esc_attr_e( 'Map', 'amanahcareservices' ); ?>">
-			<div class="relative overflow-hidden rounded-[2rem] border border-[#ece6f6] shadow-[0_30px_70px_-35px_rgba(27,11,58,0.3)]" data-reveal>
-				<iframe
-					title="<?php esc_attr_e( 'Map showing our office location', 'amanahcareservices' ); ?>"
-					src="<?php echo esc_url( 'https://maps.google.com/maps?q=' . rawurlencode( preg_replace( '/\s+/', ' ', $contact_details['address'] ) ) . '&output=embed' ); ?>"
-					class="block h-[380px] w-full border-0 grayscale-[35%] lg:h-[480px]"
-					loading="lazy"
-					referrerpolicy="no-referrer-when-downgrade"></iframe>
-				<div class="border-t border-[#ece6f6] bg-white p-6 sm:absolute sm:bottom-6 sm:left-6 sm:max-w-sm sm:rounded-2xl sm:border-0 sm:shadow-[0_24px_50px_-20px_rgba(27,11,58,0.45)]">
-					<div class="flex items-start gap-4">
-						<span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-soft text-primary"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
-						<div>
+	<?php
+	// Map: office address when set, otherwise Sydney as the service region.
+	$map_has_address = (bool) $contact_details['address'];
+	$map_query       = $map_has_address ? preg_replace( '/\s+/', ' ', $contact_details['address'] ) : 'Sydney NSW, Australia';
+	$map_zoom        = $map_has_address ? 15 : 10;
+	$map_link        = $map_has_address ? $contact_details['map_url'] : 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode( $map_query );
+	?>
+	<!-- Map -->
+	<section class="mx-auto max-w-[1400px] px-5 py-16 sm:py-20 md:px-8 lg:px-12" aria-label="<?php esc_attr_e( 'Map', 'amanahcareservices' ); ?>">
+		<div class="relative overflow-hidden rounded-[2rem] border border-[#ece6f6] shadow-[0_30px_70px_-35px_rgba(27,11,58,0.3)]" data-reveal>
+			<iframe
+				title="<?php echo $map_has_address ? esc_attr__( 'Map showing our office location', 'amanahcareservices' ) : esc_attr__( 'Map of Sydney, our service area', 'amanahcareservices' ); ?>"
+				src="<?php echo esc_url( 'https://maps.google.com/maps?q=' . rawurlencode( $map_query ) . '&z=' . $map_zoom . '&t=k&output=embed' ); ?>"
+				class="block h-[380px] w-full border-0 lg:h-[480px]"
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"></iframe>
+			<div class="border-t border-[#ece6f6] bg-white p-6 sm:absolute sm:bottom-6 sm:left-6 sm:max-w-sm sm:rounded-2xl sm:border-0 sm:shadow-[0_24px_50px_-20px_rgba(27,11,58,0.45)]">
+				<div class="flex items-start gap-4">
+					<span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-soft text-primary"><i class="fa-solid <?php echo $map_has_address ? 'fa-location-dot' : 'fa-map-location-dot'; ?>" aria-hidden="true"></i></span>
+					<div>
+						<?php if ( $map_has_address ) : ?>
 							<p class="text-[10.5px] font-extrabold uppercase tracking-[0.2em] text-body"><?php esc_html_e( 'Find us', 'amanahcareservices' ); ?></p>
 							<p class="mt-1 font-bold leading-6 text-ink"><?php echo nl2br( esc_html( $contact_details['address'] ) ); ?></p>
-							<a class="mt-3 inline-flex items-center gap-2 text-sm font-extrabold text-primary transition hover:gap-3" href="<?php echo esc_url( $contact_details['map_url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Get directions', 'amanahcareservices' ); ?><i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i><span class="screen-reader-text"><?php esc_html_e( '(opens in a new tab)', 'amanahcareservices' ); ?></span></a>
-						</div>
+						<?php else : ?>
+							<p class="text-[10.5px] font-extrabold uppercase tracking-[0.2em] text-body"><?php esc_html_e( 'Where we support', 'amanahcareservices' ); ?></p>
+							<p class="mt-1 font-bold leading-6 text-ink"><?php echo esc_html( $contact_details['service_area'] ? $contact_details['service_area'] : __( 'Sydney, NSW', 'amanahcareservices' ) ); ?></p>
+						<?php endif; ?>
+						<a class="mt-3 inline-flex items-center gap-2 text-sm font-extrabold text-primary transition hover:gap-3" href="<?php echo esc_url( $map_link ); ?>" target="_blank" rel="noopener noreferrer"><?php echo $map_has_address ? esc_html__( 'Get directions', 'amanahcareservices' ) : esc_html__( 'View on Google Maps', 'amanahcareservices' ); ?><i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i><span class="screen-reader-text"><?php esc_html_e( '(opens in a new tab)', 'amanahcareservices' ); ?></span></a>
 					</div>
 				</div>
 			</div>
-		</section>
-	<?php endif; ?>
+		</div>
+	</section>
 
 	<?php get_template_part( 'template-parts/content', 'page-extra' ); ?>
 </main>
