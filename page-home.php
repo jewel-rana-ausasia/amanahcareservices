@@ -135,8 +135,8 @@ for ( $i = 1; $i <= 3; $i++ ) {
 					<div class="relative overflow-hidden shadow-[0_40px_80px_-35px_rgba(27,11,58,0.45)]">
 						<img
 							src="<?php echo esc_url( $home_about_image_url ); ?>"
-							alt="<?php esc_attr_e( 'An Amanah Care Services support worker sharing a warm moment with a participant', 'amanahcareservices' ); ?>"
-							class="h-[420px] w-full object-cover object-[82%_center] transition duration-1000 hover:scale-[1.03] sm:h-[520px] lg:h-[600px]"
+							alt="<?php esc_attr_e( 'An Amanah Care Services support worker and a participant planning their week together at home', 'amanahcareservices' ); ?>"
+							class="h-[420px] w-full object-cover object-center transition duration-1000 hover:scale-[1.03] sm:h-[520px] lg:h-[600px]"
 							loading="lazy"
 							decoding="async">
 						<span class="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" aria-hidden="true"></span>

@@ -107,12 +107,22 @@ $about_faqs = array(
 							if ( $about_image_id ) {
 								echo wp_get_attachment_image( $about_image_id, 'large', false, array( 'class' => $about_image_class . ' object-center', 'loading' => 'lazy' ) );
 							} else {
-								$about_image_file = file_exists( get_template_directory() . '/assets/images/about/amanah-about.jpg' ) ? 'about/amanah-about.jpg' : 'hero/amanah-hero-bg.jpg';
+								// About page photo first, then the shared homepage About photo, then the hero.
+								$about_image_file = 'hero/amanah-hero-bg.jpg';
+								foreach ( array( 'about/amanah-about-page.jpg', 'about/amanah-about.jpg' ) as $about_candidate ) {
+									if ( file_exists( get_template_directory() . '/assets/images/' . $about_candidate ) ) {
+										$about_image_file = $about_candidate;
+										break;
+									}
+								}
+								$about_image_size = getimagesize( get_template_directory() . '/assets/images/' . $about_image_file );
 								printf(
-									'<img src="%1$s" alt="%2$s" class="%3$s" loading="lazy" width="1920" height="950">',
+									'<img src="%1$s" alt="%2$s" class="%3$s" loading="lazy" width="%4$d" height="%5$d">',
 									esc_url( get_template_directory_uri() . '/assets/images/' . $about_image_file ),
-									esc_attr__( 'An Amanah Care support worker sharing a laugh with a participant outdoors', 'amanahcareservices' ),
-									esc_attr( $about_image_class . ' object-[72%_center]' )
+									esc_attr__( 'An Amanah Care Services support worker walking through a local park with a participant and his daughter', 'amanahcareservices' ),
+									esc_attr( $about_image_class . ( 'hero/amanah-hero-bg.jpg' === $about_image_file ? ' object-[72%_center]' : ' object-center' ) ),
+									$about_image_size ? (int) $about_image_size[0] : 1200,
+									$about_image_size ? (int) $about_image_size[1] : 1000
 								);
 							}
 							?>
