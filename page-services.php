@@ -267,7 +267,7 @@ $btn_arrow   = '<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow
 	<section class="py-20 sm:py-24" aria-labelledby="services-funding-title">
 		<div class="container mx-auto px-5 md:px-8 lg:px-12">
 			<div class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-soft to-mint px-7 py-12 sm:px-12 lg:flex lg:items-center lg:justify-between lg:gap-12 lg:px-16 lg:py-16" data-reveal>
-				<span class="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full border-[46px] border-primary/[0.05]" aria-hidden="true"></span>
+				<img class="pointer-events-none absolute -right-6 top-1/2 h-auto w-44 -translate-y-1/2 select-none opacity-[0.07] sm:w-52 lg:right-10 lg:w-56" src="<?php echo esc_url( amanahcareservices_get_logo_url( 'mark' ) ); ?>" alt="" width="343" height="363" aria-hidden="true" loading="lazy" decoding="async">
 				<div class="relative max-w-2xl">
 					<p class="amanah-eyebrow"><?php esc_html_e( 'Funding your support', 'amanahcareservices' ); ?></p>
 					<h2 id="services-funding-title" class="mt-5 text-3xl font-extrabold leading-[1.15] tracking-[-0.03em] text-ink md:text-4xl"><?php esc_html_e( 'Not sure how to use your NDIS plan?', 'amanahcareservices' ); ?></h2>
