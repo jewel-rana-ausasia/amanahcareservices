@@ -196,37 +196,24 @@ $hero_bg = $hero_image_id
 	}
 
 	@media (max-width: 767px) {
-		.amanah-premium-hero {
-			align-items: flex-start;
-		}
-
 		.amanah-premium-hero__image {
 			object-position: 70% center;
 		}
 
+		/* Lighter wash so the photo stays visible while text remains readable. */
 		.amanah-premium-hero__overlay {
 			background:
 				linear-gradient(180deg,
-					rgba(255, 255, 255, .98) 0%,
-					rgba(255, 255, 255, .96) 48%,
-					rgba(255, 255, 255, .82) 70%,
-					rgba(255, 255, 255, .40) 100%);
+					rgba(255, 255, 255, .86) 0%,
+					rgba(255, 255, 255, .74) 45%,
+					rgba(255, 255, 255, .62) 75%,
+					rgba(255, 255, 255, .45) 100%);
 		}
 	}
 
 	@media (max-width: 639px) {
 		.amanah-premium-hero__image {
-			object-position: 71% center;
-			opacity: .8;
-		}
-
-		.amanah-premium-hero__overlay {
-			background:
-				linear-gradient(180deg,
-					rgba(255, 255, 255, .99) 0%,
-					rgba(255, 255, 255, .97) 55%,
-					rgba(255, 255, 255, .85) 74%,
-					rgba(255, 255, 255, .55) 100%);
+			object-position: 68% center;
 		}
 	}
 

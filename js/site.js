@@ -31,6 +31,8 @@
 		closeIcon.classList.toggle( 'hidden', ! isOpen );
 		button.setAttribute( 'aria-expanded', isOpen ? 'true' : 'false' );
 		button.setAttribute( 'aria-label', isOpen ? 'Close menu' : 'Open menu' );
+		// Keep the page behind the panel from scrolling while the menu is open.
+		document.body.style.overflow = isOpen ? 'hidden' : '';
 	}
 
 	if ( button && menu && openIcon && closeIcon ) {
@@ -46,7 +48,7 @@
 		} );
 
 		window.addEventListener( 'resize', function () {
-			if ( window.innerWidth >= 1024 ) {
+			if ( window.innerWidth >= 834 ) {
 				setMenu( false );
 			}
 		} );

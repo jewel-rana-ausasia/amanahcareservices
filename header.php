@@ -26,6 +26,14 @@ $amanah_socials = amanahcareservices_get_social_links();
 	<script>
 		tailwind.config = {
 			theme: {
+				// Full-width container (with the existing px-* gutters) below 1280px, so tablets
+				// such as Surface Pro / iPad aren't capped at the previous breakpoint's width.
+				container: {
+					screens: {
+						xl: '1280px',
+						'2xl': '1536px'
+					}
+				},
 				extend: {
 					colors: {
 						primary: '#511F9F',
@@ -193,11 +201,60 @@ $amanah_socials = amanahcareservices_get_social_links();
 			transform: translate(0, 0);
 		}
 
+		/* Compact desktop header for tablets (iPad Pro portrait and up). */
+		@media (min-width: 834px) and (max-width: 1279px) {
+			.amanah-header-logo img {
+				max-height: 46px;
+			}
+
+			.amanah-nav>ul {
+				gap: clamp(0.9rem, 1.6vw, 1.5rem);
+			}
+
+			.amanah-nav>ul>li>a {
+				font-size: 0.78rem;
+				letter-spacing: 0.01em;
+			}
+
+			.amanah-header-actions>a:last-child {
+				min-height: 44px;
+				padding-right: 1rem;
+				padding-left: 1rem;
+				font-size: 10px;
+				letter-spacing: 0.1em;
+			}
+		}
+
 		/* Mobile navigation */
 		.amanah-mobile-menu {
-			max-height: calc(100vh - 5rem);
+			max-height: calc(100vh - 88px);
+			max-height: calc(100dvh - 88px);
 			overflow-y: auto;
 			overscroll-behavior: contain;
+		}
+
+		.amanah-mobile-menu:not(.hidden) {
+			animation: amanahMenuIn 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+		}
+
+		.amanah-mobile-menu:not(.hidden) #mobile-primary-menu>li {
+			animation: amanahMenuItemIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+		}
+
+		.amanah-mobile-menu #mobile-primary-menu>li:nth-child(2) { animation-delay: 0.04s; }
+		.amanah-mobile-menu #mobile-primary-menu>li:nth-child(3) { animation-delay: 0.08s; }
+		.amanah-mobile-menu #mobile-primary-menu>li:nth-child(4) { animation-delay: 0.12s; }
+		.amanah-mobile-menu #mobile-primary-menu>li:nth-child(5) { animation-delay: 0.16s; }
+		.amanah-mobile-menu #mobile-primary-menu>li:nth-child(n+6) { animation-delay: 0.2s; }
+
+		@keyframes amanahMenuIn {
+			from { opacity: 0; transform: translateY(-10px); }
+			to { opacity: 1; transform: none; }
+		}
+
+		@keyframes amanahMenuItemIn {
+			from { opacity: 0; transform: translateX(-12px); }
+			to { opacity: 1; transform: none; }
 		}
 
 		.amanah-mobile-menu ul {
@@ -207,41 +264,88 @@ $amanah_socials = amanahcareservices_get_social_links();
 		}
 
 		.amanah-mobile-menu #mobile-primary-menu>li+li {
-			border-top: 1px solid #efeaf7;
+			margin-top: 0.25rem;
 		}
 
 		.amanah-mobile-menu li {
 			position: relative;
 		}
 
-		.amanah-mobile-menu li a {
-			display: block;
-			padding: 0.95rem 3.25rem 0.95rem 0.25rem;
+		.amanah-mobile-menu #mobile-primary-menu>li>a {
+			position: relative;
+			display: flex;
+			align-items: center;
+			min-height: 3.35rem;
+			padding: 0.85rem 3.25rem 0.85rem 1rem;
+			border-radius: 0.9rem;
 			color: #1b0b3a;
+			font-size: 1.02rem;
 			font-weight: 700;
-			transition: color 0.2s ease, padding 0.2s ease;
+			letter-spacing: -0.01em;
+			transition: background-color 0.2s ease, color 0.2s ease;
 		}
 
-		.amanah-mobile-menu li a:hover,
-		.amanah-mobile-menu li.current-menu-item>a,
-		.amanah-mobile-menu li.current_page_item>a {
-			padding-left: 0.6rem;
+		/* Gradient accent bar on the current page. */
+		.amanah-mobile-menu #mobile-primary-menu>li>a::before {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			height: 0;
+			width: 3px;
+			border-radius: 999px;
+			background: linear-gradient(180deg, #511f9f, #2ea22a);
+			content: "";
+			transform: translateY(-50%);
+			transition: height 0.25s ease;
+		}
+
+		/* Chevron on links without a submenu toggle. */
+		.amanah-mobile-menu #mobile-primary-menu>li:not(.menu-item-has-children):not(.page_item_has_children)>a::after {
+			position: absolute;
+			right: 1.1rem;
+			content: "\f054";
+			font-family: "Font Awesome 6 Free";
+			font-size: 0.65rem;
+			font-weight: 900;
+			color: #bfb0dd;
+			transition: color 0.2s ease, transform 0.2s ease;
+		}
+
+		.amanah-mobile-menu #mobile-primary-menu>li>a:hover,
+		.amanah-mobile-menu #mobile-primary-menu>li.current-menu-item>a,
+		.amanah-mobile-menu #mobile-primary-menu>li.current_page_item>a,
+		.amanah-mobile-menu #mobile-primary-menu>li.current-menu-ancestor>a {
+			background: #f6f2fd;
 			color: #511f9f;
+		}
+
+		.amanah-mobile-menu #mobile-primary-menu>li.current-menu-item>a::before,
+		.amanah-mobile-menu #mobile-primary-menu>li.current_page_item>a::before,
+		.amanah-mobile-menu #mobile-primary-menu>li.current-menu-ancestor>a::before {
+			height: 1.5rem;
+		}
+
+		.amanah-mobile-menu #mobile-primary-menu>li>a:hover::after,
+		.amanah-mobile-menu #mobile-primary-menu>li.current-menu-item>a::after,
+		.amanah-mobile-menu #mobile-primary-menu>li.current_page_item>a::after {
+			color: #511f9f;
+			transform: translateX(3px);
 		}
 
 		.amanah-mobile-menu .submenu-toggle {
 			position: absolute;
-			top: 0.5rem;
-			right: 0;
+			top: 0.45rem;
+			right: 0.45rem;
 			display: inline-flex;
-			height: 2.5rem;
-			width: 2.5rem;
+			height: 2.45rem;
+			width: 2.45rem;
 			align-items: center;
 			justify-content: center;
 			border: 1px solid #e6def5;
 			border-radius: 0.75rem;
-			background: #f6f2fd;
+			background: #fff;
 			color: #511f9f;
+			transition: background-color 0.2s ease, color 0.2s ease;
 		}
 
 		.amanah-mobile-menu .submenu-toggle::before {
@@ -264,8 +368,8 @@ $amanah_socials = amanahcareservices_get_social_links();
 		.amanah-mobile-menu .sub-menu,
 		.amanah-mobile-menu .children {
 			display: none;
-			margin: 0 0 0.75rem 0.35rem;
-			padding-left: 0.85rem;
+			margin: 0.35rem 0 0.6rem 1.25rem;
+			padding-left: 0.75rem;
 			border-left: 2px solid rgba(46, 162, 42, 0.35);
 		}
 
@@ -276,10 +380,21 @@ $amanah_socials = amanahcareservices_get_social_links();
 
 		.amanah-mobile-menu .sub-menu a,
 		.amanah-mobile-menu .children a {
-			padding-top: 0.65rem;
-			padding-bottom: 0.65rem;
+			display: block;
+			padding: 0.65rem 0.85rem;
+			border-radius: 0.7rem;
+			color: #524a63;
 			font-size: 0.92rem;
 			font-weight: 600;
+			transition: background-color 0.2s ease, color 0.2s ease;
+		}
+
+		.amanah-mobile-menu .sub-menu a:hover,
+		.amanah-mobile-menu .children a:hover,
+		.amanah-mobile-menu .sub-menu .current-menu-item>a,
+		.amanah-mobile-menu .children .current_page_item>a {
+			background: #f6f2fd;
+			color: #511f9f;
 		}
 
 		@media (prefers-reduced-motion: reduce) {
@@ -364,7 +479,7 @@ $amanah_socials = amanahcareservices_get_social_links();
 		<header id="masthead" class="site-header sticky top-0 z-50">
 			<div id="main-header" class="border-b border-[#ece6f6] bg-white/95 backdrop-blur-xl transition-shadow duration-300">
 				<div class="container mx-auto px-4 md:px-6">
-					<div class="flex min-h-[88px] items-center justify-between gap-4 lg:min-h-[100px]">
+					<div class="flex min-h-[88px] items-center justify-between gap-4 min-[834px]:min-h-[100px]">
 						<a class="amanah-header-logo flex shrink-0 items-center" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 							<img
 								src="<?php echo esc_url( amanahcareservices_get_logo_url( 'horizontal' ) ); ?>"
@@ -375,7 +490,7 @@ $amanah_socials = amanahcareservices_get_social_links();
 								decoding="async">
 						</a>
 
-						<nav class="amanah-nav hidden flex-1 justify-center lg:flex" aria-label="<?php esc_attr_e( 'Primary navigation', 'amanahcareservices' ); ?>">
+						<nav class="amanah-nav hidden flex-1 justify-center min-[834px]:flex" aria-label="<?php esc_attr_e( 'Primary navigation', 'amanahcareservices' ); ?>">
 							<?php
 							wp_nav_menu(
 								array(
@@ -388,7 +503,7 @@ $amanah_socials = amanahcareservices_get_social_links();
 							?>
 						</nav>
 
-						<div class="hidden items-center gap-3 lg:flex">
+						<div class="amanah-header-actions hidden items-center gap-3 min-[834px]:flex">
 							<?php if ( $amanah_phone['label'] ) : ?>
 								<a href="<?php echo esc_attr( $amanah_phone['uri'] ); ?>" class="group hidden items-center gap-3 xl:flex">
 									<span class="flex h-11 w-11 items-center justify-center rounded-full bg-mint text-secondaryDark transition group-hover:bg-secondary group-hover:text-white">
@@ -412,7 +527,7 @@ $amanah_socials = amanahcareservices_get_social_links();
 						</div>
 
 						<button id="mobile-menu-button"
-							class="flex h-11 w-11 items-center justify-center rounded-xl border border-[#e6def5] bg-soft text-primary transition hover:bg-primary hover:text-white lg:hidden"
+							class="flex h-11 w-11 items-center justify-center rounded-xl border border-[#e6def5] bg-soft text-primary transition duration-300 hover:border-primary hover:bg-primary hover:text-white aria-expanded:border-primary aria-expanded:bg-primary aria-expanded:text-white aria-expanded:shadow-[0_10px_24px_rgba(81,31,159,.3)] min-[834px]:hidden"
 							type="button"
 							aria-controls="mobile-menu"
 							aria-expanded="false"
@@ -423,8 +538,13 @@ $amanah_socials = amanahcareservices_get_social_links();
 					</div>
 				</div>
 
-				<div id="mobile-menu" class="amanah-mobile-menu hidden border-t border-[#efeaf7] bg-white shadow-[0_24px_50px_rgba(27,11,58,0.14)] lg:hidden">
-					<div class="space-y-6 px-5 py-6 md:px-8">
+				<div id="mobile-menu" class="amanah-mobile-menu hidden border-t border-[#efeaf7] bg-gradient-to-b from-white via-white to-soft shadow-[0_30px_60px_rgba(27,11,58,0.18)] min-[834px]:hidden">
+					<div class="px-4 pb-6 pt-5 md:px-8">
+						<p class="mb-3 flex items-center gap-3 px-4 text-[10px] font-extrabold uppercase tracking-[0.24em] text-primary/70">
+							<span><?php esc_html_e( 'Menu', 'amanahcareservices' ); ?></span>
+							<span class="h-px flex-1 bg-gradient-to-r from-lilac/70 to-transparent" aria-hidden="true"></span>
+						</p>
+
 						<nav aria-label="<?php esc_attr_e( 'Mobile navigation', 'amanahcareservices' ); ?>">
 							<?php
 							wp_nav_menu(
@@ -438,39 +558,52 @@ $amanah_socials = amanahcareservices_get_social_links();
 							?>
 						</nav>
 
-						<div class="grid gap-3 sm:grid-cols-2">
-							<a class="flex min-h-[50px] items-center justify-center gap-3 rounded-md bg-primary text-[11px] font-extrabold uppercase tracking-[0.14em] text-white shadow-lg shadow-primary/20 transition hover:bg-primaryDark"
+						<div class="mt-6 grid gap-3 sm:grid-cols-2">
+							<a class="group relative flex min-h-[54px] items-center justify-center gap-3 overflow-hidden rounded-xl bg-primary px-6 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white shadow-[0_14px_32px_rgba(81,31,159,.28)] transition duration-300 hover:bg-primaryDark"
 								href="<?php echo esc_url( $amanah_contact['referral_url'] ); ?>">
 								<?php esc_html_e( 'Make a Referral', 'amanahcareservices' ); ?>
-								<i class="fa-solid fa-arrow-right text-[10px]" aria-hidden="true"></i>
+								<i class="fa-solid fa-arrow-right text-[11px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i>
+								<span class="absolute inset-x-0 bottom-0 h-[3px] bg-gradient-to-r from-secondary to-leaf" aria-hidden="true"></span>
 							</a>
-							<?php if ( $amanah_phone['label'] ) : ?>
-								<a class="flex items-center justify-center gap-3 rounded-full border border-secondary/30 bg-mint py-4 text-sm font-extrabold text-secondaryDark"
-									href="<?php echo esc_attr( $amanah_phone['uri'] ); ?>">
-									<i class="fa-solid fa-phone" aria-hidden="true"></i>
-									<?php echo esc_html( $amanah_phone['label'] ); ?>
-								</a>
-							<?php else : ?>
-								<a class="flex items-center justify-center gap-3 rounded-full border border-secondary/30 bg-mint py-4 text-sm font-extrabold text-secondaryDark"
-									href="<?php echo esc_url( $amanah_contact['cta_url'] ); ?>">
-									<i class="fa-solid fa-comments" aria-hidden="true"></i>
-									<?php esc_html_e( 'Contact Us', 'amanahcareservices' ); ?>
-								</a>
-							<?php endif; ?>
+							<?php
+							$amanah_call_href  = $amanah_phone['label'] ? $amanah_phone['uri'] : $amanah_contact['cta_url'];
+							$amanah_call_icon  = $amanah_phone['label'] ? 'fa-phone-volume' : 'fa-comments';
+							$amanah_call_eye   = $amanah_phone['label'] ? __( 'Talk to our team', 'amanahcareservices' ) : __( 'Get in touch', 'amanahcareservices' );
+							$amanah_call_label = $amanah_phone['label'] ? $amanah_phone['label'] : __( 'Contact Us', 'amanahcareservices' );
+							?>
+							<a class="group flex min-h-[54px] items-center gap-3.5 rounded-xl border border-[#e6def5] bg-white py-2.5 pl-2.5 pr-4 shadow-[0_8px_24px_rgba(27,11,58,0.06)] transition duration-300 hover:border-secondary/40"
+								href="<?php echo esc_attr( $amanah_call_href ); ?>">
+								<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-mint text-secondaryDark transition duration-300 group-hover:bg-secondary group-hover:text-white">
+									<i class="fa-solid <?php echo esc_attr( $amanah_call_icon ); ?>" aria-hidden="true"></i>
+								</span>
+								<span class="min-w-0 flex-1 leading-tight">
+									<span class="block text-[10px] font-bold uppercase tracking-[0.16em] text-body/80"><?php echo esc_html( $amanah_call_eye ); ?></span>
+									<span class="mt-0.5 block text-[15px] font-extrabold text-ink"><?php echo esc_html( $amanah_call_label ); ?></span>
+								</span>
+								<i class="fa-solid fa-chevron-right text-[10px] text-[#bfb0dd] transition group-hover:translate-x-0.5 group-hover:text-secondary" aria-hidden="true"></i>
+							</a>
 						</div>
 
 						<?php if ( $amanah_contact['email'] || $amanah_socials ) : ?>
-							<div class="flex flex-wrap items-center justify-between gap-4 border-t border-[#efeaf7] pt-5">
+							<div class="relative mt-5 overflow-hidden rounded-2xl bg-gradient-to-br from-ink via-[#2a0f5a] to-primaryDark p-5 text-white">
+								<span class="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-secondary/25 blur-3xl" aria-hidden="true"></span>
+								<p class="relative flex items-center gap-2 font-display text-[15px] tracking-wide text-white/95">
+									<i class="fa-solid fa-heart text-[11px] text-leaf" aria-hidden="true"></i>
+									<?php esc_html_e( 'Amanah Means Trust. We Honour It.', 'amanahcareservices' ); ?>
+								</p>
 								<?php if ( $amanah_contact['email'] ) : ?>
-									<a class="flex items-center gap-2 text-sm font-semibold text-body" href="mailto:<?php echo esc_attr( antispambot( $amanah_contact['email'] ) ); ?>">
-										<i class="fa-solid fa-envelope text-primary" aria-hidden="true"></i>
-										<?php echo esc_html( antispambot( $amanah_contact['email'] ) ); ?>
+									<a class="relative mt-4 flex items-center gap-3 text-sm font-semibold text-white/85 transition hover:text-leaf" href="mailto:<?php echo esc_attr( antispambot( $amanah_contact['email'] ) ); ?>">
+										<span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-leaf">
+											<i class="fa-solid fa-envelope text-[12px]" aria-hidden="true"></i>
+										</span>
+										<span class="min-w-0 break-all"><?php echo esc_html( antispambot( $amanah_contact['email'] ) ); ?></span>
 									</a>
 								<?php endif; ?>
 								<?php if ( $amanah_socials ) : ?>
-									<div class="flex gap-2">
+									<div class="relative mt-4 flex items-center gap-2 border-t border-white/10 pt-4">
+										<span class="mr-auto text-[10px] font-bold uppercase tracking-[0.2em] text-white/60"><?php esc_html_e( 'Follow us', 'amanahcareservices' ); ?></span>
 										<?php foreach ( $amanah_socials as $amanah_social ) : ?>
-											<a class="flex h-9 w-9 items-center justify-center rounded-full bg-soft text-primary transition hover:bg-primary hover:text-white"
+											<a class="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/[0.06] text-white transition duration-300 hover:border-leaf hover:bg-leaf hover:text-ink"
 												href="<?php echo esc_url( $amanah_social['url'] ); ?>"
 												target="_blank"
 												rel="noopener noreferrer"
