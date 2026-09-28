@@ -99,7 +99,7 @@ $btn_arrow   = '<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow
 							role="tabpanel"
 							tabindex="-1"
 							aria-labelledby="<?php echo esc_attr( $service['slug'] ); ?>-title">
-							<div class="grid gap-8 lg:grid-cols-12 lg:gap-14">
+							<div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-14">
 								<!-- Media (stays in view while reading on desktop) -->
 								<div class="lg:col-span-5">
 									<div class="amanah-svc-media-wrap">
@@ -131,14 +131,14 @@ $btn_arrow   = '<span class="ml-3 flex items-center"><i class="fa-solid fa-arrow
 								</div>
 
 								<!-- Content -->
-								<div class="lg:col-span-7 lg:py-3">
+								<div class="min-w-0 lg:col-span-7 lg:py-3">
 									<div class="flex flex-wrap items-center gap-3">
 										<span class="amanah-svc-kicker"><?php echo esc_html( sprintf( '%s / %s', $panel_num, str_pad( (string) $services_total, 2, '0', STR_PAD_LEFT ) ) ); ?></span>
 										<span class="h-px w-10 bg-gradient-to-r from-secondary to-primary" aria-hidden="true"></span>
 										<span class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-body"><?php esc_html_e( 'NDIS support service', 'amanahcareservices' ); ?></span>
 									</div>
 
-									<h2 id="<?php echo esc_attr( $service['slug'] ); ?>-title" class="mt-5 text-3xl font-extrabold leading-[1.1] tracking-[-0.035em] text-ink md:text-[2.6rem]"><?php echo esc_html( $heading ); ?></h2>
+									<h2 id="<?php echo esc_attr( $service['slug'] ); ?>-title" class="mt-5 text-3xl font-extrabold leading-[1.1] tracking-[-0.035em] text-ink md:text-[2.6rem]"><?php echo str_replace( '/', '/<wbr>', esc_html( $heading ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above; <wbr> lets long "A/B" names wrap on small screens. ?></h2>
 									<?php if ( $heading !== $service['title'] ) : ?>
 										<p class="mt-3 text-lg font-bold tracking-[-0.01em] <?php echo $is_green ? 'text-secondaryDark' : 'text-primary'; ?>"><?php echo esc_html( $service['title'] ); ?></p>
 									<?php endif; ?>

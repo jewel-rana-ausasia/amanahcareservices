@@ -134,7 +134,7 @@ $footer_service_links = amanahcareservices_get_menu_links(
 					<?php if ( $footer_contact['address'] ) : ?>
 						<li class="flex items-start gap-4">
 							<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-leaf"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
-							<address class="not-italic">
+							<address class="mb-0 not-italic">
 								<span class="mb-0.5 block font-bold text-white"><?php esc_html_e( 'Visit Us', 'amanahcareservices' ); ?></span>
 								<a class="transition hover:text-leaf" href="<?php echo esc_url( $footer_contact['map_url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php echo nl2br( esc_html( $footer_contact['address'] ) ); ?></a>
 							</address>
@@ -176,7 +176,7 @@ $footer_service_links = amanahcareservices_get_menu_links(
 			<p>
 				&copy; <?php echo esc_html( wp_date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. <?php esc_html_e( 'All rights reserved.', 'amanahcareservices' ); ?>
 				<?php if ( $footer_contact['abn'] ) : ?>
-					<span class="ml-1 border-l border-white/20 pl-2"><?php echo esc_html( sprintf( /* translators: %s: ABN. */ __( 'ABN %s', 'amanahcareservices' ), $footer_contact['abn'] ) ); ?></span>
+					<span class="mt-1 block md:ml-1 md:mt-0 md:inline md:border-l md:border-white/20 md:pl-2"><?php echo esc_html( sprintf( /* translators: %s: ABN. */ __( 'ABN %s', 'amanahcareservices' ), $footer_contact['abn'] ) ); ?></span>
 				<?php endif; ?>
 			</p>
 			<p class="flex flex-wrap items-center justify-center gap-3">

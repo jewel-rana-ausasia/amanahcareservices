@@ -66,7 +66,7 @@ $hero_bg = $hero_image_id
 			</h1>
 
 			<!-- Description -->
-			<p class="mt-7 max-w-[640px] text-[16px] font-medium leading-[1.85] text-[#50465e] sm:text-[17px] lg:text-[18px]">
+			<p class="mt-7 max-w-[640px] md:max-w-[520px] lg:max-w-[580px] xl:max-w-[640px] text-[16px] font-medium leading-[1.85] text-[#50465e] sm:text-[17px] lg:text-[18px]">
 				<?php esc_html_e('Amanah Care Services provides respectful, person-centred support that helps you live safely, build independence and stay connected to the people and community you love.', 'amanahcareservices'); ?>
 			</p>
 

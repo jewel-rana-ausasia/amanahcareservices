@@ -318,7 +318,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 				<?php endforeach; ?>
 			</ol>
 
-			<div class="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row" data-reveal>
+			<div class="mt-14 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center" data-reveal>
 				<a href="<?php echo esc_url( $home_contact['cta_url'] ); ?>"
 					class="group relative inline-flex min-h-[50px] items-center justify-center overflow-hidden rounded-md bg-white px-7 text-[11px] font-extrabold uppercase tracking-[0.14em] text-primary shadow-[0_14px_32px_rgba(0,0,0,.25)] transition duration-300 hover:-translate-y-0.5 hover:bg-soft">
 					<span><?php esc_html_e( 'Start the conversation', 'amanahcareservices' ); ?></span>
@@ -431,7 +431,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 					<?php endforeach; ?>
 				</div>
 
-				<div class="relative mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+				<div class="relative mt-12 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
 					<a href="<?php echo esc_url( $home_contact['referral_url'] ); ?>"
 						class="group relative inline-flex min-h-[50px] items-center justify-center overflow-hidden rounded-md bg-primary px-7 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white shadow-[0_14px_32px_rgba(81,31,159,.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-primaryDark hover:shadow-[0_18px_38px_rgba(81,31,159,.36)]">
 						<span><?php esc_html_e( 'Make a Referral', 'amanahcareservices' ); ?></span>
