@@ -402,9 +402,9 @@ for ( $i = 1; $i <= 3; $i++ ) {
 	<!-- =========================================================
 	     Who we support
 	     ========================================================= -->
-	<section class="py-20 sm:py-24 lg:py-28" aria-labelledby="home-audience-title">
+	<section class="amanah-audience relative overflow-hidden py-20 sm:py-24 lg:py-28" aria-labelledby="home-audience-title">
 		<div class="container mx-auto px-5 md:px-8 lg:px-12">
-			<div class="amanah-audience relative overflow-hidden rounded-[2.5rem] px-6 py-14 sm:px-10 lg:px-16 lg:py-20" data-reveal>
+			<div data-reveal>
 				<div class="relative mx-auto max-w-3xl text-center">
 					<p class="amanah-eyebrow justify-center"><?php esc_html_e( 'Who we support', 'amanahcareservices' ); ?></p>
 					<h2 id="home-audience-title" class="mt-5 text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] text-ink md:text-[2.75rem]">
@@ -416,14 +416,21 @@ for ( $i = 1; $i <= 3; $i++ ) {
 					</p>
 				</div>
 
-				<div class="relative mt-12 grid gap-5 md:grid-cols-3">
+				<div class="relative mt-14 grid gap-6 md:grid-cols-3">
 					<?php foreach ( $home_audiences as $index => $audience ) : ?>
-						<div class="rounded-[1.75rem] bg-white/90 p-7 shadow-[0_18px_40px_-20px_rgba(27,11,58,0.18)] backdrop-blur">
-							<span class="flex h-14 w-14 items-center justify-center rounded-full <?php echo 1 === $index ? 'bg-secondary text-white' : 'bg-primary text-white'; ?> shadow-lg">
-								<i class="fa-solid <?php echo esc_attr( $audience['icon'] ); ?> text-lg" aria-hidden="true"></i>
-							</span>
-							<h3 class="mt-6 text-lg font-extrabold text-ink"><?php echo esc_html( $audience['title'] ); ?></h3>
-							<p class="mt-2 text-sm leading-7 text-body"><?php echo esc_html( $audience['text'] ); ?></p>
+						<?php $is_green = 1 === $index % 2; ?>
+						<div class="group relative isolate flex flex-col overflow-hidden rounded-[1.75rem] border border-white bg-white/95 p-8 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_24px_60px_-28px_rgba(27,11,58,0.28)] ring-1 ring-[#ece6f6] backdrop-blur transition duration-500 hover:-translate-y-1.5 hover:shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_36px_70px_-28px_rgba(81,31,159,0.38)] lg:p-9">
+							<span class="pointer-events-none absolute -right-16 -top-16 -z-10 h-44 w-44 rounded-full <?php echo $is_green ? 'bg-mint' : 'bg-soft'; ?> opacity-70 transition duration-500 group-hover:scale-110 group-hover:opacity-100" aria-hidden="true"></span>
+
+							<div class="flex items-start justify-between">
+								<span class="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br <?php echo $is_green ? 'from-secondary to-secondaryDark shadow-[0_14px_28px_-10px_rgba(46,162,42,0.6)]' : 'from-primary to-primaryDark shadow-[0_14px_28px_-10px_rgba(81,31,159,0.6)]'; ?> text-white transition duration-500 group-hover:-rotate-6">
+									<i class="fa-solid <?php echo esc_attr( $audience['icon'] ); ?> text-lg" aria-hidden="true"></i>
+								</span>
+								<span class="font-display text-4xl font-extrabold leading-none tracking-[-0.04em] text-primary/10 transition duration-500 group-hover:text-primary/20" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span>
+							</div>
+
+							<h3 class="mt-7 text-xl font-extrabold tracking-[-0.02em] text-ink"><?php echo esc_html( $audience['title'] ); ?></h3>
+							<p class="mt-5 text-[15px] leading-7 text-body"><?php echo esc_html( $audience['text'] ); ?></p>
 						</div>
 					<?php endforeach; ?>
 				</div>
