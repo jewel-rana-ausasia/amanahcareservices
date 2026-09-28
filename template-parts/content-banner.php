@@ -49,7 +49,7 @@ $banner_parent   = is_page() ? wp_get_post_parent_id( get_the_ID() ) : 0;
 <section class="amanah-banner relative isolate flex items-center overflow-hidden text-white lg:min-h-[500px]" aria-labelledby="page-banner-title">
 	<?php if ( $banner_image_id ) : ?>
 		<div class="absolute inset-0 -z-20">
-			<?php echo wp_get_attachment_image( $banner_image_id, 'amanahcareservices-banner', false, array( 'class' => 'h-full w-full object-cover object-center', 'sizes' => '100vw', 'loading' => 'eager', 'alt' => '' ) ); ?>
+			<?php echo wp_get_attachment_image( $banner_image_id, 'amanahcareservices-banner', false, array( 'class' => 'h-full w-full object-cover object-[75%_center] sm:object-center', 'sizes' => '100vw', 'loading' => 'eager', 'alt' => '' ) ); ?>
 		</div>
 		<span class="absolute inset-0 -z-10 bg-gradient-to-r from-ink/75 via-primaryDark/40 to-transparent" aria-hidden="true"></span>
 	<?php endif; ?>
@@ -59,8 +59,8 @@ $banner_parent   = is_page() ? wp_get_post_parent_id( get_the_ID() ) : 0;
 		<img class="amanah-banner-art__mark" src="<?php echo esc_url( amanahcareservices_get_logo_url( 'mark' ) ); ?>" alt="" width="343" height="363">
 	</div>
 
-	<div class="<?php echo esc_attr( $banner_args['container'] ); ?> relative mx-auto w-full px-5 pb-24 pt-16 md:px-8 lg:px-12 lg:pb-24 lg:pt-16">
-		<nav class="mb-7" aria-label="<?php esc_attr_e( 'Breadcrumb', 'amanahcareservices' ); ?>">
+	<div class="<?php echo esc_attr( $banner_args['container'] ); ?> relative mx-auto w-full px-5 pb-16 pt-10 sm:pb-24 sm:pt-16 md:px-8 lg:px-12 lg:pb-24 lg:pt-16">
+		<nav class="mb-5 sm:mb-7" aria-label="<?php esc_attr_e( 'Breadcrumb', 'amanahcareservices' ); ?>">
 			<ol class="inline-flex flex-wrap items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 text-xs font-semibold text-white/75 backdrop-blur">
 				<li>
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center gap-2 transition hover:text-leaf">
@@ -81,16 +81,16 @@ $banner_parent   = is_page() ? wp_get_post_parent_id( get_the_ID() ) : 0;
 			<?php if ( $banner_args['eyebrow'] ) : ?>
 				<p class="amanah-eyebrow amanah-eyebrow--light"><?php echo esc_html( $banner_args['eyebrow'] ); ?></p>
 			<?php endif; ?>
-			<h1 id="page-banner-title" class="mt-5 text-4xl font-extrabold leading-[1.08] tracking-[-0.04em] sm:text-5xl lg:text-6xl">
+			<h1 id="page-banner-title" class="mt-3 text-[1.75rem] font-extrabold sm:mt-5 leading-[1.08] tracking-[-0.04em] sm:text-5xl lg:text-6xl">
 				<?php echo esc_html( $banner_args['title'] ); ?>
 			</h1>
 			<?php if ( $banner_args['description'] ) : ?>
-				<p class="mt-6 max-w-2xl text-lg leading-8 text-white/75"><?php echo esc_html( $banner_args['description'] ); ?></p>
+				<p class="mt-6 hidden max-w-2xl sm:block text-lg leading-8 text-white/75"><?php echo esc_html( $banner_args['description'] ); ?></p>
 			<?php endif; ?>
 		</div>
 	</div>
 
-	<svg class="absolute inset-x-0 bottom-0 h-10 w-full text-white sm:h-14" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
+	<svg class="absolute inset-x-0 -bottom-px h-5 w-full text-white sm:h-14" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
 		<path d="M0 60h1440V20c-240 26-480 40-720 40S240 46 0 20z" />
 	</svg>
 </section>
